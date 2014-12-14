@@ -13,11 +13,9 @@ category: Java
 
 <p>
   The tool works by querying the <code>SYS.USER_VIEWS</code> view in
-  Oracle and determining the dependencies of each view. It then uses <a
-  href="http://jakarta.apache.org/velocity/">Velocity</a> to generate a
+  Oracle and determining the dependencies of each view. It then uses <a href="http://jakarta.apache.org/velocity/">Velocity</a> to generate a
   <a href="http://graphml.graphdrawing.org/">GraphML</a> file of the
-  dependencies, which are then manipulated using the excellent <a
-  href="http://www.yworks.com/en/products_yed_about.htm">yEd</a>
+  dependencies, which are then manipulated using the excellent <a href="http://www.yworks.com/en/products_yed_about.htm">yEd</a>
   program.
 </p>
 
@@ -25,11 +23,9 @@ category: Java
   Hence, today I had the need for a quick <strike>and dirty</strike> way
   of parsing SQL statements. Initially I looked into using the well
   known <a href="http://tinyurl.com/5q6bo">StringTokenizer</a> but
-  realised that it was not up to the task. I then noticed the class <a
-  href="http://tinyurl.com/6bk6r">StreamTokenizer</a> which admit I had
+  realised that it was not up to the task. I then noticed the class <a href="http://tinyurl.com/6bk6r">StreamTokenizer</a> which admit I had
   never seen before (it has been there since JDK 1.0!). After reading
-  the Javadoc and this <a href="http://tinyurl.com/3uc9g">helpful
-  guide</a> I knocked up the following class:
+  the Javadoc and this <a href="http://tinyurl.com/3uc9g">helpful guide</a> I knocked up the following class:
 </p>
 
 <pre>

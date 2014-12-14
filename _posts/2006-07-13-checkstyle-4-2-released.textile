@@ -5,8 +5,7 @@ title: Checkstyle 4.2 released
 category: Java
 ---
 <p>
-  It has taken about seven months to get the next release of <a
-  href="http://checkstyle.sf.net">Checkstyle</a> out the door. This is
+  It has taken about seven months to get the next release of <a href="http://checkstyle.sf.net">Checkstyle</a> out the door. This is
   quite a long time between releases. I put this down to:
 </p>
 
@@ -17,8 +16,7 @@ category: Java
 
 <p>
   Both good things. I got asked by Bill Venners for a quote for the
-  latest release. It got posted <a
-  href="http://www.artima.com/forums/flat.jsp?forum=276&amp;thread=168350">here</a>,
+  latest release. It got posted <a href="http://www.artima.com/forums/flat.jsp?forum=276&amp;thread=168350">here</a>,
   but here is what I said:
 </p>
 

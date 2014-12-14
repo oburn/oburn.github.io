@@ -5,10 +5,8 @@ title: Checkstyle 4.4 & 5.x
 category: Java
 ---
 <p>
-I am happy to say that <a
-href="http://checkstyle.sourceforge.net/">Checkstyle 4.4</a> has
-been released. Certainly a long time between releases! See <a
-href="http://checkstyle.sourceforge.net/releasenotes.html">here</a>
+I am happy to say that <a href="http://checkstyle.sourceforge.net/">Checkstyle 4.4</a> has
+been released. Certainly a long time between releases! See <a href="http://checkstyle.sourceforge.net/releasenotes.html">here</a>
 for details.
 </p>
 

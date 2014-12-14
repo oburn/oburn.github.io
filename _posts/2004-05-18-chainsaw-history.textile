@@ -6,8 +6,7 @@ category: Java
 ---
 <p>
 Back in 2001 I worked at an interesting company that at the time
-worked on an e-Business <a
-href="http://www.davidjones.com.au">website</a>. They have since reinvented
+worked on an e-Business <a href="http://www.davidjones.com.au">website</a>. They have since reinvented
 themselves selling excellent tools like <a href="http://www.thecortex.net/clover/index.html">Clover</a>. The company was a great place to work as many <a href="http://codefeed.com/blog/">great</a> <a href="http://madbean.com/blog/">developers</a> <a href="http://www.dogbiscuit.org/mdub/weblog/">worked</a> there (sorry BPH, you have no blog:-).
 </p>
 

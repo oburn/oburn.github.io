@@ -7,8 +7,7 @@ category: Java
 <p>
   I tend to use <a href="">Eclipse</a> as my primary IDE. This is
   largely due to the fact that I know it the best, not that I think it
-  is better/worse than <a
-  href="http://www.intellij.com/idea/">IDEA</a>. On the whole I quite
+  is better/worse than <a href="http://www.intellij.com/idea/">IDEA</a>. On the whole I quite
   like it, but the one area where I think Eclipse is really lame is the
   much vaunted Code Formatter. I have been battling with it for a long
   time and it shows not signs of improving.

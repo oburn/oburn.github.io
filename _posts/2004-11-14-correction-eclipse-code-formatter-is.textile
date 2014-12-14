@@ -5,19 +5,15 @@ title: "Correction: Eclipse Code Formatter is <i>not</i> lame"
 category: Java
 ---
 <p>
-  I recently <a
-  href="/page/oburn/20041111#eclipse_code_formatter_is_lame">blogged</a>
+  I recently <a href="/page/oburn/20041111#eclipse_code_formatter_is_lame">blogged</a>
   that the Code Formatter is lame. This got a few comments that I should
   be using the <a href="http://jalopy.sourceforge.net/">Jalopy</a>
   plug-in. I am not keen to go down this path as development on the open
-  source project appears to <a
-  href="http://www.triemax.com/products/">have stopped</a>.
+  source project appears to <a href="http://www.triemax.com/products/">have stopped</a>.
 </p>
 
 <p>
-  <a
-  href="/comments/oburn/?anchor=eclipse_code_formatter_is_lame#comment5">Jonathan
-  Aquino</a> questioned what version of Eclipse I was running as the
+  <a href="/comments/oburn/?anchor=eclipse_code_formatter_is_lame#comment5">Jonathan Aquino</a> questioned what version of Eclipse I was running as the
   formatter worked just fine for him. Since I am running <i>3.0.1</i>, I
   did not think this would be the problem. But it got me thinking, the
   code formatter setup I have was developed on an earlier version

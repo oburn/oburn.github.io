@@ -5,9 +5,7 @@ title: Variable naming convention
 category: Java
 ---
 <p>
-  I just read Tor Norbye's latest blog entry <a
-  href="http://blogs.sun.com/roller/page/tor?entry=code_advice_11_initialize_fields">Code
-  Advice #11: Initialize fields using the property name</a>, and I have
+  I just read Tor Norbye's latest blog entry <a href="http://blogs.sun.com/roller/page/tor?entry=code_advice_11_initialize_fields">Code Advice #11: Initialize fields using the property name</a>, and I have
   to say I disagree with him. I used the coding style where the name of the variable is prefixed with a character to indicate the scope. The following table outlines the rules.
 </p>
 
@@ -73,8 +71,7 @@ category: Java
   </ul>
 
 <p>
-  I enforce this style with the following checks in my <a
-  href="http://checkstyle.sf.net">Checkstyle</a> configurations:
+  I enforce this style with the following checks in my <a href="http://checkstyle.sf.net">Checkstyle</a> configurations:
 </p>
 
 <pre>

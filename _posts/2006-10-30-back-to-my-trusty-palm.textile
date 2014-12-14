@@ -5,11 +5,9 @@ title: Back to my trusty Palm
 category: Computing
 ---
 <p>
-  One of the nice things about buying electrical equipment from <a
-  href="http://www.dse.com.au">Dick Smith</a> is that they have a 14-day
+  One of the nice things about buying electrical equipment from <a href="http://www.dse.com.au">Dick Smith</a> is that they have a 14-day
   no questions asked refund policy. Today I took advantage of it to
-  return a <a
-  href="http://www.cnet.com.au/pdas/pdas/0,239035588,240057263,00.htm">iPAC
+  return a <a href="http://www.cnet.com.au/pdas/pdas/0,239035588,240057263,00.htm">iPAC
   rx1950</a> that I bought four days ago. When asked why I was returning
   it, I said <i>it was not as good as my Palm</i> and I got my refund of
   $348.
@@ -17,9 +15,7 @@ category: Computing
 
 <p>
   I have been using Palm devices actively since 1997. So what motivated
-  me to upgrade to the iPAC from a <a
-  href="http://www.palm.com/us/support/tungstene/">Palm Tungsten
-  E</a>. Well, here were the reasons:
+  me to upgrade to the iPAC from a <a href="http://www.palm.com/us/support/tungstene/">Palm Tungsten E</a>. Well, here were the reasons:
 </p>
 
 <ul>
@@ -92,7 +88,5 @@ category: Computing
 </ul>
 
 <p>
-  When the Palm dies I will need to consider whether I stick with the <a
-  href="http://www.palm.com/us/products/handhelds/tungsten-e2/">dead
-  platform</a> or go for the next generation iPAQ.
+  When the Palm dies I will need to consider whether I stick with the <a href="http://www.palm.com/us/products/handhelds/tungsten-e2/">dead platform</a> or go for the next generation iPAQ.
 </p>

@@ -12,12 +12,9 @@ category: Java
     </p>
 
     <p>
-      I contribute to the Open Source community in the form of <a
-      href="http://checkstyle.sourceforge.net">Checkstyle</a>. In the
+      I contribute to the Open Source community in the form of <a href="http://checkstyle.sourceforge.net">Checkstyle</a>. In the
       past I developed a tool called Chainsaw that worked its way into
-      <a href="http://logging.apache.org/log4j/docs/">Log4J</a>. The <a
-      href="http://logging.apache.org/log4j/docs/chainsaw.html">new
-      version</a> is an excellent rewrite, but I digress. The reason I
+      <a href="http://logging.apache.org/log4j/docs/">Log4J</a>. The <a href="http://logging.apache.org/log4j/docs/chainsaw.html">new version</a> is an excellent rewrite, but I digress. The reason I
       contribute to Open Source is because I enjoy it, not because I am
       paid to. Hence, I only do things if I personally see merit in
       doing so, and I am willing to give up my personal time to do so.

@@ -5,8 +5,7 @@ title: Simulate @Override in JDK 1.4
 category: Java
 ---
     <p>
-      One of the nice features in Java 5 is the annotation <a
-      href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Override.html">@Override</a>. It prevents a base class changing underfoot without you realising. For example, consider the base class:
+      One of the nice features in Java 5 is the annotation <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Override.html">@Override</a>. It prevents a base class changing underfoot without you realising. For example, consider the base class:
     </p>
 
     <pre>    public class Base

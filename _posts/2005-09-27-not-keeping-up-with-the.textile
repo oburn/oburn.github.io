@@ -6,10 +6,7 @@ category: Java
 ---
 <p>
   I must be getting old, but I am finding that I am getting further
-  behind <a
-  href="http://www.michaelstudman.com/codegargle/index.do">my</a> <a
-  href="http://www.madbean.com/blog">geek</a> <a
-  href="http://www.opencurly.com/">friends</a>. No longer do I feel
+  behind <a href="http://www.michaelstudman.com/codegargle/index.do">my</a> <a href="http://www.madbean.com/blog">geek</a> <a href="http://www.opencurly.com/">friends</a>. No longer do I feel
   compelled to have the latest phone, music gadget or computer
   system. For example I use the <i>drunk test</i> when evaluating a new
   phone. This basically comes down to answering <i>"can I afford to lose

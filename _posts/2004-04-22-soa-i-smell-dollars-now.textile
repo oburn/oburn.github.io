@@ -7,8 +7,7 @@ category: Java
 <p>
   Way back in 1989 when I was at university I had the good luck of doing
   a course on operating systems taught by John Lions where we got to
-  read the source code to Unix. John was <a
-  href="http://www.mids.org/pay/mn/901/jl.html">largely responsible</a>
+  read the source code to Unix. John was <a href="http://www.mids.org/pay/mn/901/jl.html">largely responsible</a>
   for introducing UNIX to Australia. I remember to this day when he
   asked in a lecture on networking:
 </p>
@@ -37,8 +36,7 @@ category: Java
 
 <p>
   Armed with this information about my background, you would understand
-  why I resonated with Rockford Lhotka's posting about <a href="http://www.lhotka.net/WeBlog/PermaLink.aspx?guid=05f88592-9ecb-4331-a86b-cfeebc411dfe">SOA,
-  dollar signs and trust boundaries</a>. I am going through the issues
+  why I resonated with Rockford Lhotka's posting about <a href="http://www.lhotka.net/WeBlog/PermaLink.aspx?guid=05f88592-9ecb-4331-a86b-cfeebc411dfe">SOA, dollar signs and trust boundaries</a>. I am going through the issues
   on a project at the moment about how to apply Service Oriented
   Architecture principles. Rockford's discussion on trust boundaries is
   excellent.

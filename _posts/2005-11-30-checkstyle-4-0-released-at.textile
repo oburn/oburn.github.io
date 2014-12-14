@@ -6,12 +6,9 @@ category: Java
 ---
 <p>
   Well the Checkstyle team has
-  finally <a href="http://tinyurl.com/88zqp">released version
-  4.0</a>. It was a very long beta cycle, in part due to the complexity
+  finally <a href="http://tinyurl.com/88zqp">released version 4.0</a>. It was a very long beta cycle, in part due to the complexity
   of Java 5, but also due to the committers being
-  busy <a
-  href="http://hi5.ninemsn.com.au/">with</a> <a
-  href="http://www.thewiggles.com/">life</a>.
+  busy <a href="http://hi5.ninemsn.com.au/">with</a> <a href="http://www.thewiggles.com/">life</a>.
 </p>
 
 <p>
@@ -23,15 +20,11 @@ category: Java
 
 <p>
   I very much
-  doubt <a
-  href="http://jayfields.blogspot.com/2005/11/whats-in-your-build.html#113321517110738579">this
-  loser</a> (having a Hani moment:-) will be trying out the latest
+  doubt <a href="http://jayfields.blogspot.com/2005/11/whats-in-your-build.html#113321517110738579">this loser</a> (having a Hani moment:-) will be trying out the latest
   release. This has to rate as one of the stupidest reasons I have ever
   heard for not using a tool like Checkstyle. John even talked about it
   some more
-  in <a
-  href="http://software-nomad.blogspot.com/2005/08/magic-numbers.html">his
-  blog</a>. Do not blame Checkstyle if people write stupid code to
+  in <a href="http://software-nomad.blogspot.com/2005/08/magic-numbers.html">his blog</a>. Do not blame Checkstyle if people write stupid code to
   bypass it. After all is just an aid to help write good code, not a
   guarantee.
 </p>
