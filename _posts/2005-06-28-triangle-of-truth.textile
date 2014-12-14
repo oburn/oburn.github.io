@@ -5,7 +5,7 @@ title: Triangle of truth
 category: Java
 ---
 <p>
-<img src="/resources/o/oburn/truth-triangle.png" alt="triangle of truth"/>
+<img src="/images/truth-triangle.png" alt="triangle of truth"/>
 </p>
 
     <p>

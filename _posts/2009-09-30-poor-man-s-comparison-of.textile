@@ -35,13 +35,13 @@ notoriously slow application.</li>
 <p>The following graph shows the results for memory consumption:</p>
 
 <blockquote>
-<p class="quoted"><img src="http://www.jroller.com/oburn/resource/av-stats-mb.jpg" alt="" /></p>
+<p class="quoted"><img src="/images/av-stats-mb.jpg" alt="" /></p>
 </blockquote>
 
 <p>The following graph shows the results for launch times:</p>
 
 <blockquote>
-<p class="quoted"><img src="http://www.jroller.com/oburn/resource/av-stats-launch.jpg" alt="" /></p>
+<p class="quoted"><img src="/images/av-stats-launch.jpg" alt="" /></p>
 </blockquote>
 
 <p>I will let you draw your conclusions from the results above. Personally,

@@ -63,7 +63,7 @@ category: Java
 </p>
 
 <p>
-  <img src="/resources/o/oburn/samurai-overview.png" alt="Samurai"/>
+  <img src="/images/samurai-overview.png" alt="Samurai"/>
 </p>
 
 <p>

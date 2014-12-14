@@ -13,7 +13,7 @@ category: Java
 </p>
 
 <p>
-   <img src="/resources/o/oburn/firefox-themes.png" alt="Themes"/>
+   <img src="/images/firefox-themes.png" alt="Themes"/>
 </p>
 
 <p>
@@ -21,5 +21,5 @@ category: Java
 </p>
 
 <p>
-   <img src="/resources/o/oburn/firefox-addons.png" alt="Add-ons"/>
+   <img src="/images/firefox-addons.png" alt="Add-ons"/>
 </p>

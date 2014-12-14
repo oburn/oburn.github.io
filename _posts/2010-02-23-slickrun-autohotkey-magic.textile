@@ -14,7 +14,7 @@ example, the following screen-shot shows that when I type in <code>fi</code>, it
 completed to <code>firefox</code> automatically.</p>
 
 <p style="text-align: center;">
-<img src="http://www.jroller.com/oburn/resource/blog-sr-01.png" alt="" />
+<img src="/images/blog-sr-01.png" alt="" />
 </p>
 
 <p>Recently, it occurred to me that I would like to have the <code>firefox</code>
@@ -82,7 +82,7 @@ firefox no matching window title was found.</li>
 <p>Here is how this is configured as a SlickRun keyword:</p>
 
 <p style="text-align: center;">
-<img src="http://www.jroller.com/oburn/resource/blog-sr-02.png" alt="" />
+<img src="/images/blog-sr-02.png" alt="" />
 </p>
 
 <p>I wish I had thought of this technique back when I started using
