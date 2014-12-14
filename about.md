@@ -6,7 +6,7 @@ permalink: /about/
 
 This is the personal website and blog for Oliver Burn. I am a big believer in the *"do the simplest thing that can possibly work"* principle, and have applied it to this web site!
 
-The website is generated using [Jekyll](http://jekyllrb.com) and hosted (for free
+The website is generated using [Jekyll](http://jekyllrb.com) and hosted (for free)
  using [Github Pages](https://pages.github.com/).
  
 If you are wondering why the site is called `puppycrawl.com`, you are not alone. The source of inspiration for the name came from a dog named "[Applet](/images/applet.gif)".
