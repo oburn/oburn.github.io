@@ -1,0 +1,16 @@
+---
+layout: post
+permalink: blog/mars_pathfinder_reset_issue
+title: Mars Pathfinder reset issue
+category: Java
+---
+<p>Friend sent these links about the Mars Pathfinder reset issue. A good read, especially the follow-up. Love the quote:</p>
+
+<blockquote>
+"test what you fly and fly what you test"
+</blockquote>
+
+<ul>
+  <li><a href="http://research.microsoft.com/~mbj/Mars_Pathfinder/Mars_Pathfinder.html">http://research.microsoft.com/~mbj/Mars_Pathfinder/Mars_Pathfinder.html</a></li>
+  <li><a href="http://research.microsoft.com/~mbj/Mars_Pathfinder/Authoritative_Account.html">http://research.microsoft.com/~mbj/Mars_Pathfinder/Authoritative_Account.html</a></li>
+</ul>

@@ -1,0 +1,23 @@
+---
+layout: post
+permalink: blog/still_blogging
+title: Still blogging.....
+category: Java
+---
+<p>
+A few people have commented to me that I seem to have stopped blogging. Thanks for the interest. :-)
+</p>
+
+<p>I have the intent to continue blogging, but the reasons I have stopped for
+a while are:</p>
+
+<ul>
+  <li>FreeRoller had (has?) some very bad performance problems which made
+  updating the blog a real pain in the butt. I wrote one blog (which I
+  normally do offline) which I could not post for days. This was very
+  annoying.</li>
+
+  <li>I have got a life! I have been so busy between work and social
+  activities something had to give, and blogging is pretty low on the
+  list. Sure you understand. ;-) </li>
+</ul>

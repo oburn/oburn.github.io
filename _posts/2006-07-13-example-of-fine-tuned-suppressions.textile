@@ -1,0 +1,46 @@
+---
+layout: post
+permalink: blog/example_of_fine_tuned_suppressions
+title: Example of fine tuned suppressions
+category: Java
+---
+<p>
+  To follow up on <a
+  href="http://www.jroller.com/page/oburn?entry=checkstyle_4_2_released">my
+  post</a> yesterday about fine tuned suppressions, I thought I would
+  give an example. Below is what I have defined in the Checkstyle rules
+  file:
+</p>
+
+<pre>
+  &lt;!-- Look for use of standard out/error. Want to be able
+       to suppress this, so define an id.
+  --&gt;
+  &lt;module name="GenericIllegalRegexp"&gt;
+    <b>&lt;property name="id" value="consoleOutput"/&gt;</b>
+    &lt;property name="format" value="System\.((out|err))\."/&gt;
+    &lt;property name="message" value="Use a logger."/&gt;
+  &lt;/module&gt;
+
+  &lt;!-- Look for trailing whitespace. IDE's add it all the time,
+       causing problems merging branches in Subversion. Never
+       want to turn this off.
+  --&gt;
+  &lt;module name="GenericIllegalRegexp"&gt;
+    &lt;property name="format" value="\s$"/&gt;
+    &lt;property name="message"
+              value="Trailing whitespace causes merge HELL!"/&gt;
+  &lt;/module&gt;
+</pre>
+
+<p>
+  So now it is possible to just suppress the warning about logging to
+  the console, but still check for trailing whitespace. As an example:
+</p>
+
+<pre>
+  &lt;!-- allow logging to console in database tools --&gt;
+  &lt;suppress <b>id="consoleOutput"</b>
+            files="[/\\]db[/\\]src[/\\]java[/\\]"
+            /&gt;
+</pre>

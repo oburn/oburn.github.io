@@ -1,0 +1,49 @@
+---
+layout: post
+permalink: blog/title_i_have_been_corrected
+title: I used the "old school way"
+category: Java
+---
+<p>
+I recently posted a <a href="/page/oburn/20030531#howto_freeroller_comments">HOWTO</a> on adding comments to your blog in FreeRoller now it has been upgraded. Unfortunately I showed how to do it using the <a href="http://www.rollerweblogger.org/comments/roller/Weblog/oliver_explains_the_old_school">old school way</a>. Luckily an entry has been added to RollerWiki showing the <a href="http://www.rollerweblogger.org/wiki/Wiki.jsp?page=EnablingComments">right way</a>.
+</p>
+
+<p>
+Originally I gave the complete source to the <i>"_day"</i> template. For completeness, here is my current <i>"Weblog"</i> template:
+</p>
+
+<pre>
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;
+ &lt;title&gt;#showWebsiteTitle()&lt;/title&gt;
+ &lt;style type=&quot;text/css&quot;&gt;#includePage(&quot;_css&quot;)&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body background=&quot;/roller/images/bg-greylines.gif&quot;&gt;
+
+&lt;table cellpadding=&quot;5&quot; cellspacing=&quot;5&quot; border=&quot;1&quot; align=&quot;center&quot; width=&quot;98%&quot;&gt;
+  &lt;tbody&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;20%&quot; valign=&quot;top&quot; bgcolor=&quot;#ffffff&quot;&gt;
+      #showBasicNavBar(true)&lt;br&gt;
+      RSS Feed: #showRSSBadge()&lt;br&gt;
+      &lt;br&gt;
+      #showWeblogCalendar()&lt;br&gt;
+      #showBookmarks(&quot;Fav Blogs&quot; true false)&lt;br&gt; 
+      #showReferers(15 10)&lt;br&gt;
+      #showEditorNavBar(true)&lt;br&gt;
+    &lt;/td&gt;
+
+    &lt;td width=&quot;80%&quot; valign=&quot;top&quot; bgcolor=&quot;#ffffff&quot;&gt;
+      &lt;h2&gt;#showWebsiteTitle()&lt;/h2&gt;
+      #showWeblogCategoryChooser()&lt;br&gt;
+      #showWeblogEntries(&quot;_day&quot; 20)
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>

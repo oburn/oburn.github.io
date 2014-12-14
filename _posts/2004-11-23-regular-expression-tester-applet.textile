@@ -1,0 +1,7 @@
+---
+layout: post
+permalink: blog/regular_expression_tester_applet
+title: Regular Expression Tester Applet
+category: Java
+---
+<p>Found a good Java Regular Expression tester Applet at <a href="http://www.cis.upenn.edu/~matuszek/General/RegexTester/regex-tester.html">http://www.cis.upenn.edu/~matuszek/General/RegexTester/regex-tester.html</a>.</p>
