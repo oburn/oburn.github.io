@@ -1,0 +1,46 @@
+---
+layout: post
+permalink: blog/howto_freeroller_comments
+title: "HOWTO: FreeRoller comments"
+category: Java
+---
+<p>
+I maybe slow, but I finally got comments working in FreeRoller. To get there, I had to change the following line in my Weblog page:
+</p>
+
+<pre>
+    $macros.showWeblogEntries()
+</pre>
+
+<p>
+to:
+</p>
+
+<pre>
+    $macros.showWeblogEntries("_day")
+</pre>
+
+
+<p>
+This will make the rendering of the weblog entries use my "_day" template. I then used the following for the "_day" template:
+</p>
+
+<pre>
+    &lt;div class="entry"&gt;
+       $macros.showDayPermalink()
+       $macros.showEntryDate()
+    &lt;/div&gt;
+    
+    #foreach( $entry in $entries )
+    &lt;p&gt;
+       &lt;b&gt;$entry.title&lt;/b&gt; $entry.text 
+       &lt;span class="dateStamp"&gt;($entry.pubTime)&lt;/span&gt;
+        $macros.showEntryPermalink( $entry )
+        $macros.showCommentsLink($entry)
+    &lt;/p&gt;
+    #end
+</pre>
+
+<p>
+I hope that some people out there find this information useful. If you do, please feel free to leave a comment. ;-)
+</p>

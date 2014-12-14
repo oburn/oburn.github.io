@@ -1,0 +1,30 @@
+---
+layout: post
+permalink: blog/checkstyle_4_4_5_x
+title: Checkstyle 4.4 & 5.x
+category: Java
+---
+<p>
+I am happy to say that <a
+href="http://checkstyle.sourceforge.net/">Checkstyle 4.4</a> has
+been released. Certainly a long time between releases! See <a
+href="http://checkstyle.sourceforge.net/releasenotes.html">here</a>
+for details.
+</p>
+
+<p>
+I have been on my current (work) project for well over three
+years. Whilst I have learnt a lot of things, Java 5 has not been
+one of them. I have done a few pet projects in it, but nothing
+serious. Hence I have convinced the Checkstyle team to branch
+Checkstyle and work on a version 5.x.
+</p>
+
+<p>
+This version is based on Java 5 source, will require Java 5 JRE,
+and is geared towards supporting Java 5 better. The current state
+is available from the Subversion repository. A new
+GenericWhitespace check has been written to properly the Generic
+type tokens '<' and '>'. This will be a huge relief for anybody
+who has tried to apply Checkstyle to a Java 5 source code base.
+</p>

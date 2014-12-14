@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>Do we have Claira then?</title>
+
+    <script type="text/javascript">
+// A known date when we had Claira. Have her every second weekend from this date.
+var FRI_CLAIRA = new Date(2010, 1, 19);
+function myupdate() {
+  var MILLIS_PER_DAY = 24 * 60 * 60 * 1000;
+  var d =
+    new Date(document.getElementById('year').value,
+             document.getElementById('month').value,
+             document.getElementById('day').value);
+  var outcome = d;
+
+  // if not friday - sunday then alert
+  // convert to friday, so
+  //   if friday, use it
+  //   if saturday, take off one day
+  //   if sunday, take off two days
+  // calculate number of days since FRI_CLAIRA
+  // if num days is mod 14, then we have Claira
+  // else, we do not
+
+  var day = d.getDay();
+  if (day == 3) {
+    outcome = "It is Wednesday, so of course we do!";
+  }
+  else if (day == 1) {
+    outcome = "Sorry, this is Monday!";
+  }
+  else if (day == 2) {
+    outcome = "Sorry, this is Tuesday!";
+  }
+  else if (day == 4) {
+    outcome = "This is Thursday, we drop her to school in the morning!";
+  }
+  else {
+    var whenDays =
+      Math.round((d.getTime() - FRI_CLAIRA.getTime()) / MILLIS_PER_DAY);
+    if (day == 0) {
+      whenDays = whenDays - 2;
+    }
+    else if (day == 6) {
+      whenDays = whenDays - 1;
+    }
+
+    if ((whenDays % 14) == 0) {
+      outcome = "YES WE DO!";
+    }
+    else {
+      outcome = "NO, hope nothing good is on. :-(";
+    }
+  }
+  var x = document.getElementById('res');
+  x.innerHTML = outcome;
+  //alert('hello: ' + x);
+}
+    </script>
+
+</head>
+
+<body>
+<h1>Do we have Claira then?</h1>
+
+<p>
+  This page is to help you answer the standard question of <i>Do we have
+  Claira then?</i>. To use it, simply enter a date.
+</p>
+
+<p>
+  <b>WARNING:</b> this page does not take into account school
+  holidays. To know when they are, use <a
+  href="http://www.google.com.au/search?q=nsw+school+holidays">this</a>.
+</p>
+
+<p>
+<b>When:</b>
+  <script type="text/javascript">
+/* <![CDATA[ */
+        document.write('<select id="day" onchange="javascript:myupdate();">');
+        for (i = 1; i < 32; i++) {
+          document.write('  <option>' + i + '</option>');
+        }
+        document.write('</select>');
+/* ]]> */
+  </script>
+  &nbsp;
+  <select id="month" onchange="javascript:myupdate();">
+    <option value="0">January</option>
+    <option value="1">February</option>
+    <option value="2">March</option>
+    <option value="3">April</option>
+    <option value="4">May</option>
+    <option value="5">June</option>
+    <option value="6">July</option>
+    <option value="7">August</option>
+    <option value="8">September</option>
+    <option value="9">October</option>
+    <option value="10">November</option>
+    <option value="11">December</option>
+  </select>
+  &nbsp;
+  <script type="text/javascript">
+/* <![CDATA[ */
+        document.write('<select id="year" onchange="javascript:myupdate();">');
+        for (i = 2010; i < 2020; i++) {
+          document.write('  <option>' + i + '</option>');
+        }
+        document.write('</select>');
+/* ]]> */
+  </script>
+</p>
+<p>
+  <b><i><span id="res"></span></i></b>
+</p>
+
+<hr>
+</body>
+</html>

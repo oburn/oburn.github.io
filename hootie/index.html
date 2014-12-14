@@ -1,0 +1,134 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Hootie v3 JavaScript Powered</title>
+
+    <script language="JavaScript" type="text/javascript" src="hootie-v3.js"></script>
+    <script language="JavaScript" type="text/javascript" >
+/* <![CDATA[ */
+
+// Clear the keys
+function clearKeys() {
+    if (document.key.text1.value != document.key.text2.value) {
+        alert('not the same value');
+    }
+    document.key.text1.value = '';
+    document.key.text2.value = '';
+
+    return false;
+}
+
+function clearAll() {
+    document.key.text1.value = '';
+    document.key.text2.value = '';
+    document.fin.tin.value = '';
+    document.fin.tout.value = '';
+    return false;
+}
+
+function copyUp() {
+    document.fin.tin.value = document.fin.tout.value;
+    return false;
+}
+
+function encryptText() {
+    var key = document.key.text1.value;
+    if ((key.length == 0) || (key != document.key.text2.value)) {
+        alert('Keys are missing or different');
+        return false;
+    }
+
+    // Create the contents including the date/time.
+    var contents = '*** Encrypted on '
+        + (new Date()).toUTCString()
+        + ' ***\n'
+        + document.fin.tin.value
+        + '\n*** End message ***';
+
+    document.fin.tout.value = MSG_BEGIN + encrypt_v3(contents, key) + MSG_END;
+
+    return false;
+}
+
+function decryptText() {
+    var key = document.key.text1.value;
+    if ((key.length == 0)) {
+        alert('Key is missing');
+        return false;
+    }
+    var msg = document.fin.tin.value;
+
+    // Check for start marker
+    var startIndex = msg.indexOf(MSG_BEGIN);
+    if (startIndex == -1) {
+        alert('Missing a message begin marker.');
+        return false;
+    }
+    if (msg.indexOf(MSG_BEGIN, startIndex + 1) != -1) {
+        alert('Duplicate message begin markers.');
+        return false;
+    }
+
+    // Check for end marker
+    var endIndex = msg.indexOf(MSG_END, startIndex);
+    if (endIndex == -1) {
+        alert('Missing a message end marker.');
+        return false;
+    }
+    if (msg.indexOf(MSG_END, endIndex + 1) != -1) {
+        alert('Duplicate message end markers.');
+        return false;
+    }
+
+    // extract the actual message
+    var encMsg = msg.substring(startIndex + MSG_BEGIN.length, endIndex);
+
+    // Finally add the start/end bits
+    var buf = msg.substring(0, startIndex);
+    buf = buf + decrypt_v3(encMsg, key);
+    buf = buf + msg.substring(endIndex + MSG_END.length);
+
+    document.fin.tout.value = buf;
+    return false;
+}
+
+/* ]]> */
+    </script>
+
+  </head>
+
+  <body>
+    <h1>Hootie v3 JavaScript Powered</h1>
+    <form name="key" action="#" onsubmit="return false;">
+      <p>
+        Key: <input type="password" name="text1" size="40" maxlength="1024"
+               />
+        <br />
+        Confirm: <input type="password" name="text2" size="40" maxlength="1024"
+               />
+      </p>
+      <p>
+        <input type="button" value="Encrypt" onclick="encryptText();"/>
+        <input type="button" value="Decrypt" onclick="decryptText();"/>
+        <input type="button" value="Clear Keys" onclick="clearKeys();"/>
+        <input type="button" value="Clear All" onclick="clearAll();"/>
+      </p>
+    </form>
+
+    <form name="fin" action="#" onsubmit="return false;">
+      <p>
+        Input:
+        <textarea name="tin" rows="5" cols="77"></textarea>
+      </p>
+      <p>
+        <input type="button" value="Copy Up" onclick="copyUp();"/>
+      </p>
+      <p>
+        Output:
+        <textarea name="tout" rows="5" cols="77"></textarea>
+      </p>
+    </form>
+
+    <hr/>
+    <p>Using SHA256 to create the key for AES encryption.</p>
+  </body>
+</html>

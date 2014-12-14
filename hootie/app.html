@@ -1,0 +1,215 @@
+<!DOCTYPE html> 
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Hootie Mobile</title>
+	
+	<!--
+	The CDN links 
+	<link rel="stylesheet" href="//code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.css" />
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="//code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.js"></script>
+    -->
+
+	<link rel="stylesheet" href="jquery.mobile-1.1.0-rc.1.min.css" />
+	<script src="jquery-1.7.1.min.js"></script>
+	<script src="jquery.mobile-1.1.0-rc.1.min.js"></script>
+    <script src="hootie-v3.js"></script>
+	
+	<script type="text/javascript" >
+
+	$(document).ready(function() {
+	    $("#clearInput").click(function() { document.formInOut.inputarea.value = ''; } );
+	    $("#clearOutput").click(function() { document.formInOut.outputarea.value = ''; } );
+	    $("#copyUp").click(function() { document.formInOut.inputarea.value = document.formInOut.outputarea.value; } );
+	    $("#clearKey").click(function() { 
+	        document.formKey.key1.value = '';
+	        document.formKey.key2.value = '';
+        });
+	    
+	    $("#setKey").click(function() {
+	        // Save the current key values
+	        document.formKey.key1Save.value = document.formKey.key1.value;
+	        document.formKey.key2Save.value = document.formKey.key2.value;
+	    });
+	    
+	    $("#cancelKey").click(function() {
+	        // Reset the key values
+	        document.formKey.key1.value = document.formKey.key1Save.value;
+	        document.formKey.key2.value = document.formKey.key2Save.value;
+	    });
+	    
+	    $("#clearAll").click(function() {
+	        document.formKey.key1.value = '';
+	        document.formKey.key2.value = '';
+	        document.formKey.key1Save.value = '';
+	        document.formKey.key2Save.value = '';
+	        document.formInOut.inputarea.value = '';
+	        document.formInOut.outputarea.value = '';
+	    });
+	    
+	    $("#decrypt").click(function() {
+	        document.formInOut.outputarea.value = '';
+	        var key = document.formKey.key1.value;
+	        if (key.length == 0) {
+	            return true; // go to the set key page
+	        }
+	        
+            var msg = document.formInOut.inputarea.value;
+
+            // Check for start marker
+            var startIndex = msg.indexOf(MSG_BEGIN);
+            if (startIndex == -1) {
+                document.formInOut.outputarea.value = 'Error: Missing a message begin marker.';
+                return false;
+            }
+            if (msg.indexOf(MSG_BEGIN, startIndex + 1) != -1) {
+                document.formInOut.outputarea.value = 'Error: Duplicate message begin markers.';
+                return false;
+            }
+
+            // Check for end marker
+            var endIndex = msg.indexOf(MSG_END, startIndex);
+            if (endIndex == -1) {
+                document.formInOut.outputarea.value = 'Error: Missing a message end marker.';
+                return false;
+            }
+            if (msg.indexOf(MSG_END, endIndex + 1) != -1) {
+                document.formInOut.outputarea.value = 'Error: Duplicate message end markers.';
+                return false;
+            }
+
+            // extract the actual message
+            var encMsg = msg.substring(startIndex + MSG_BEGIN.length, endIndex);
+
+            // Finally add the start/end bits
+            var buf = msg.substring(0, startIndex);
+            buf = buf + decrypt_v3(encMsg, key);
+            buf = buf + msg.substring(endIndex + MSG_END.length);
+
+	        document.formInOut.outputarea.value = buf;
+	        return false;
+	    });
+
+	    $("#encrypt").click(function() {
+	        document.formInOut.outputarea.value = '';
+	        var key = document.formKey.key1.value;
+	        if ((key.length == 0) || (key != document.formKey.key2.value)) {
+	            return true; // go to the set key page
+	        }
+
+	        // Create the contents including the date/time.
+	        var contents = '*** Encrypted on '
+	            + (new Date()).toUTCString()
+	            + ' ***\n'
+	            + document.formInOut.inputarea.value
+	            + '\n*** End message ***';
+
+	        document.formInOut.outputarea.value = MSG_BEGIN + encrypt_v3(contents, key) + MSG_END;
+	        return false;
+	    });
+	});
+	
+	</script>
+
+</head> 
+
+	
+<body> 
+
+<!-- Start of first page: #one -->
+<div data-role="page" id="one">
+
+	<div data-role="header">
+		<h1>Hootie Mobile</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" >	
+		<div data-role="controlgroup" data-type="horizontal">
+			<a href="#getKey" id="setKey" data-role="button" data-inline="false" data-mini="true" data-rel="dialog">Set Key...</a>
+			<a href="#" id="clearKey" data-role="button" data-inline="false" data-mini="true" data-icon="delete">Clear Key</a>
+			<a href="#" id="clearAll" data-role="button" data-inline="false" data-mini="true" data-icon="alert">Clear ALL</a>
+		</div>
+
+    <form name="formInOut" action="#" onsubmit="return false;">
+		<h3>Input:</h3>
+		<div data-role="controlgroup" data-type="horizontal">
+			<a href="#" id="clearInput" data-role="button" data-inline="false" data-mini="true">Clear</a>
+			<a href="#selectContact" data-role="button" data-inline="false" data-mini="true" data-rel="dialog">Input Contact...</a>
+		</div>
+		<textarea name="inputarea" id="inputarea" style="max-height: 200px;"></textarea>
+			
+		<div data-role="controlgroup" data-type="horizontal" style="padding-top: 10px;">
+			<a href="#getKey" id="decrypt" data-role="button" data-inline="false" data-mini="true">Decrypt</a>
+			<a href="#getKey" id="encrypt" data-role="button" data-inline="false" data-mini="true">Encrypt</a>
+		</div>
+	
+		<h3>Output:</h3>
+		<textarea name="outputarea" id="outputarea" style="max-height: 200px;"></textarea>
+		<div data-role="controlgroup" data-type="horizontal" style="padding-top: 10px;">
+			<a href="#" id="clearOutput" data-role="button" data-inline="false" data-mini="true">Clear</a>
+			<a href="#" id="copyUp" data-role="button" data-inline="false" data-mini="true">Copy Up</a>
+		</div>
+    </form>
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-theme="d">
+		<h4>Copyright &copy; 2012. All Rights Reserved.</h4>
+	</div><!-- /footer -->
+</div><!-- /page one -->
+
+
+<!-- Start of second page: #getKey -->
+<div data-role="page" id="getKey">
+
+	<div data-role="header">
+		<h1>Enter Key</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+	    <form name="formKey" action="#" onsubmit="return false;">
+	        <!-- Used to store save point in case of cancel -->
+	        <input type="hidden" name="key1Save" value=""/>
+	        <input type="hidden" name="key2Save" value=""/>
+			<div data-role="fieldcontain">
+	         <label for="key1">Key:</label>
+	         <input type="password" name="key1" id="key1" value="" />
+			</div>
+			<div data-role="fieldcontain">
+	         <label for="key2">Again (required if encrypting):</label>
+	         <input type="password" name="key2" id="key2" value="" />
+			</div>
+			<div style="visibility: visible;">
+				<p style="text-align: center;">Keys do not match</p>
+			</div>
+			<div class="ui-body ui-body-b">
+			<fieldset class="ui-grid-a">
+				<div class="ui-block-a"><a href="#one" id="saveKey" data-direction="reverse" data-role="button">Save</a></div>
+				<div class="ui-block-b"><a href="#one" id="cancelKey" data-direction="reverse" data-role="button">Cancel</a></div>
+		    </fieldset>
+			</div>
+		</form>
+	</div><!-- /content -->
+</div><!-- /page getKey -->
+
+<!-- Start of second page: #selectContact -->
+<div data-role="page" id="selectContact">
+
+	<div data-role="header">
+		<h1>Select Contact</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		<ul data-role="listview" data-filter="true">
+			<li><a href="index.html">Acura</a></li>
+			<li><a href="index.html">Audi</a></li>
+			<li><a href="index.html">BMW</a></li>
+		</ul>
+	</div><!-- /content -->
+</div><!-- /page selectContact -->
+
+
+</body>
+</html>

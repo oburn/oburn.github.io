@@ -1,0 +1,135 @@
+---
+layout: post
+permalink: blog/ratcheting_findbugs_errors_with_ant
+title: Ratcheting FindBugs errors with ANT
+category: Java
+---
+<p>
+On a previous project the excellent tool <a href="http://findbugs.sf.net">FindBugs</a> was added to the tool
+chain well after development has underway (500,000 lines of Java code
+already written). I used an approach termed <a href="http://skizz.biz/blog/2008/03/11/fixing-broken-windows-with-ratcheting/">ratcheting</a> to ensure that no
+more errors were introduced to the code base, and that over time the
+number of errors were reduced.
+</p>
+<p>
+The approach involves the follow strategy:
+</p><ul>
+<li>
+Run FindBugs and record the number of errors found. This is done once
+to determine the <i>low water mark</i>.
+</li>
+<li>
+Each time the build is run, calculate the number of errors found, and
+then use the following logic:
+<ul>
+<li>
+If the number of errors is lower than the existing <i>low water mark</i>,
+then record the new <i>low water mark</i>.
+</li>
+<li>
+If the number of errors is higher than the existing <i>low water     mark</i>, then fail the build as more errors have been introduced.
+</li>
+<li>
+Otherwise, be silent.
+</li>
+</ul>
+</li>
+</ul>
+
+
+<p>
+I implemented this approach using ANT + Groovy, but it could be equally
+applied with Maven.
+</p>
+<p>
+Since all our builds were done using Hudson CI server, it was run
+automatically as part of the normal build.  We did not use the Hudson
+plug-ins to implement this strategy, because at the time (2009), the
+available plug-ins did not have a way to automatically update the <i>low water mark</i> when it reduced.
+</p>
+<p>
+Here is the ANT task I used implement the logic above:
+</p>
+
+
+
+<pre class="src src-nXML">  &lt;target name=<span style="color: #8b2252;">"run-findbugs"</span> depends=<span style="color: #8b2252;">"-init"</span>&gt;
+    &lt;!-- RUN FINDBUGS (exercise left for reader) --&gt;
+
+    &lt;!-- Logic to check if the count has got worst --&gt;
+    &lt;groovy&gt;
+      &lt;arg value=<span style="color: #8b2252;">"${target}/logs/data/findbugs/bier-bugs.xml"</span>/&gt;
+      &lt;arg value=<span style="color: #8b2252;">"${project.root}/.findbugs-lowwatermark"</span>/&gt;
+// Get then number of errors found
+def errors = (new XmlSlurper().parse(args[0])).BugInstance.size()
+
+// Get the current number, defaulting to a HUGE number
+def lwmf = new File(args[1])
+int lowWaterMark = Integer.MAX_VALUE
+if (lwmf.canRead()) {
+    lwmf.eachLine { lowWaterMark = it.toInteger().intValue() }
+}
+
+if (errors &amp;lt; lowWaterMark) {
+    // We have a new record!
+    new File(args[1]).withWriter { out -&gt; out.writeLine(<span style="color: #8b2252;">"${errors}"</span>) }
+}
+else if (errors &amp;gt; lowWaterMark) {
+    // Oh dear, we are going backwards.
+    properties[<span style="color: #8b2252;">"findbugs.watermark"</span>] = <span style="color: #8b2252;">"Findbugs error count has increased from ${lowWaterMark} to ${errors}."</span>
+}
+    &lt;/groovy&gt;
+  &lt;/target&gt;
+</pre>
+
+
+
+<p>
+The reason for setting the property <code>findbugs.watermark</code> was that other
+quality checks can be run (like Checkstyle) and reports generated,
+before failing the build. At the end of the build, the following task is
+run:
+</p>
+
+
+
+<pre class="src src-nXML">&lt;target name=<span style="color: #8b2252;">"-check-failure"</span>&gt;
+  &lt;!-- check for unit test failure --&gt;
+  &lt;property file=<span style="color: #8b2252;">"${target}/test-failure.properties"</span>/&gt;
+  &lt;if&gt;
+    &lt;isset property=<span style="color: #8b2252;">"bier.test.failed"</span>/&gt;
+    &lt;then&gt;
+      &lt;my-play-sound
+          fname=<span style="color: #8b2252;">"${project.root}/build/config/sounds/unittests-failed.wav"</span>
+          /&gt;
+      &lt;fail message=<span style="color: #8b2252;">"Unit tests failed. Refer to junit reports for details."</span>/&gt;
+    &lt;/then&gt;
+  &lt;/if&gt;
+
+  &lt;property file=<span style="color: #8b2252;">"${target}/checkstyle-failure.properties"</span>/&gt;
+  &lt;if&gt;
+    &lt;isset property=<span style="color: #8b2252;">"bier.checkstyle.failed"</span>/&gt;
+    &lt;then&gt;
+      &lt;my-play-sound
+          fname=<span style="color: #8b2252;">"${project.root}/build/config/sounds/checkstyle-failed.wav"</span>
+          /&gt;
+      &lt;fail message=<span style="color: #8b2252;">"Problems with Checkstyle."</span>/&gt;
+    &lt;/then&gt;
+  &lt;/if&gt;
+
+  &lt;if&gt;
+    &lt;isset property=<span style="color: #8b2252;">"findbugs.watermark"</span>/&gt;
+    &lt;then&gt;
+      &lt;echo message=<span style="color: #8b2252;">"${findbugs.watermark}"</span>/&gt;
+      &lt;echo file=<span style="color: #8b2252;">"${project.root}/.findbugs-failure"</span>
+            message=<span style="color: #8b2252;">"${findbugs.watermark}"</span>
+            /&gt;
+    &lt;/then&gt;
+    &lt;else&gt;
+      &lt;delete file=<span style="color: #8b2252;">"${project.root}/.findbugs-failure"</span>/&gt;
+    &lt;/else&gt;
+  &lt;/if&gt;
+
+  &lt;echo&gt;The build has finished successfully.&lt;/echo&gt;
+&lt;/target&gt;
+</pre>

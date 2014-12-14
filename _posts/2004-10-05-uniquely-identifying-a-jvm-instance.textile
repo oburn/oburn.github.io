@@ -1,0 +1,25 @@
+---
+layout: post
+permalink: blog/uniquely_identifying_a_jvm_instance
+title: Uniquely identifying a JVM instance
+category: Java
+---
+<p>Recently I have been working through the issues of deploying a J2EE web application into a clustered WebSphere environment. In particular into a WebSphere cell with multiple servers on single node. In plain English this means that there are multiple JVM instances running on a single machine.</p>
+
+<p>So what? Well this has raised the interesting problem that we need to determine a unique identifier for each JVM instance so that the application logging can be sent to separate files. This is to ensure the logging does not get garbled by multiple JVM instances attempting to write at the same time and somehow the log statements get interleaved.</p>
+
+<p>Since you cannot get the process identifier, I thought of using the RMI class <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/rmi/server/UID.html">UID</a>. I had a dig through the source code and found this gem to generate a unique number on a machine:</p>
+
+<pre>
+    /**
+     * In the absence of an actual pid, just do something somewhat
+     * random.
+     */
+    private static int getHostUniqueNum() {
+	return (new Object()).hashCode();
+    }
+</pre>
+
+<p>What I find interesting is that this method is not guaranteed to generate a unique number. After reading the Javadoc for <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Object.html#hashCode()">hashCode()</a> it is clear that it is theoretically possible that two JVM instances to call this method and generate the same number. Further, on a machine with multiple CPUs it is possible that the UID class could generate the same identifier. I admit the chance is <i>very</i> small.</p>
+
+<p>In the end I elected to use an identifier that is set on the WebSphere server level using a JVM property. This had the advantage of being a small unique identifier that was constant across server restarts.</p>
