@@ -10,5 +10,7 @@ url: "http://www.puppycrawl.com" # the base hostname & protocol for your site
 twitter_username: oliverburn
 github_username:  oburn
 
+timezone: Australia/Sydney
+
 # Build settings
 markdown: kramdown
