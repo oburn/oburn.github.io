@@ -5,8 +5,7 @@ title: Log4J hangs my application
 category: Java
 ---
 <p>
-  I have been a staunch user and supporter of <a
-  href="http://logging.apache.org/log4j/docs/">Log4J</a> for a long
+  I have been a staunch user and supporter of <a href="http://logging.apache.org/log4j/docs/">Log4J</a> for a long
   time. In fact a long time ago I wrote a contribution called
   <a href="http://logging.apache.org/log4j/docs/api/org/apache/log4j/chainsaw/package-summary.html">Chainsaw</a>. Till today I held the view that Log4J was bulletproof and
   above suspicion. However, I have discovered that I was naive.
@@ -23,35 +22,20 @@ category: Java
 <p>
   Today when the application locked up, I collected a number of JVM
   thread dumps. WebSphere makes it very easy to collect using the
-  wsadmin tool (documented <a
-  href="http://publib.boulder.ibm.com/infocenter/wasinfo/v6r0/topic/com.ibm.websphere.nd.doc/info/ae/ae/txml_dump.html">here</a>). Having
-  never looked at JVM thread dumps before I found the <a
-  href="http://websphere.sys-con.com/">WebSphere Journal</a> article <a
-  href="http://websphere.sys-con.com/read/113368.htm">WebSphere
-  Application Server Java Dumps</a> very useful.
+  wsadmin tool (documented <a href="http://publib.boulder.ibm.com/infocenter/wasinfo/v6r0/topic/com.ibm.websphere.nd.doc/info/ae/ae/txml_dump.html">here</a>). Having
+  never looked at JVM thread dumps before I found the <a href="http://websphere.sys-con.com/">WebSphere Journal</a> article <a href="http://websphere.sys-con.com/read/113368.htm">WebSphere Application Server Java Dumps</a> very useful.
 </p>
 
 <p>
-  I hoped to use the <a
-  href="http://www.ibm.com/developerworks/websphere/downloads/thread_analyzer.html">WebSphere
+  I hoped to use the <a href="http://www.ibm.com/developerworks/websphere/downloads/thread_analyzer.html">WebSphere
   ThreadAnalyzer</a> tool to analyse the thread dumps. Unfortunately I
-  was to quick and overlooked that it does <a
-  href="http://www-128.ibm.com/developerworks/websphere/downloads/techpreviews.html">not
-  support</a> WebSphere 6. Going back to square one, well Google, I
-  found the JavaOne presentation <a
-  href="http://developers.sun.com/learning/javaoneonline/2004/newcooltech/TS-1646.pdf">View
-  from the Trenches: Thread Dumps thread</a>, which gave me pointers to
+  was to quick and overlooked that it does <a href="http://www-128.ibm.com/developerworks/websphere/downloads/techpreviews.html">not support</a> WebSphere 6. Going back to square one, well Google, I
+  found the JavaOne presentation <a href="http://developers.sun.com/learning/javaoneonline/2004/newcooltech/TS-1646.pdf">View from the Trenches: Thread Dumps thread</a>, which gave me pointers to
   a couple of useful tools.
 </p>
 
 <p>
-  I had good success using <a
-  href="http://yusuke.homeip.net/samurai/?english">Samurai</a> which is
-  easy to run thanks to a <a
-  href="http://yusuke.homeip.net/samurai/samurai.jnlp">webstart
-  link</a>. <a
-  href="http://dev2dev.bea.com/pub/a/2004/01/thread_dumps.html">ThreadDumpAnalyzer</a>
-  is useful as it can do a time series across multiple dumps, but it is
+  I had good success using <a href="http://yusuke.homeip.net/samurai/?english">Samurai</a> which is easy to run thanks to a <a href="http://yusuke.homeip.net/samurai/samurai.jnlp">webstart link</a>. <a href="http://dev2dev.bea.com/pub/a/2004/01/thread_dumps.html">ThreadDumpAnalyzer</a> is useful as it can do a time series across multiple dumps, but it is
   awkward to setup.
 </p>
 
@@ -104,23 +88,18 @@ Thread dump 1/1
 
 <p>
   The stack trace reveals that the thread was blocked in the Log4J code,
-  which was configured to log to file and a <a
-  href="http://logging.apache.org/log4j/docs/api/org/apache/log4j/net/SocketAppender.html">SocketAppender</a>.
+  which was configured to log to file and a <a href="http://logging.apache.org/log4j/docs/api/org/apache/log4j/net/SocketAppender.html">SocketAppender</a>.
   Now knowing that Log4J was the problem, I did some searching to find
   <a href="http://wiki.jboss.org/wiki/Wiki.jsp?page=Logging">this</a>
-  and <a
-  href="http://comments.gmane.org/gmane.comp.jakarta.log4j.devel/10016">this</a>. What
-  is very worrying is to search for the word <i>deadlock</i> in a <a
-  href="http://www.mail-archive.com/log4j-dev@logging.apache.org/msg05460.html">recent
-  bug-list</a>.
+  and <a href="http://comments.gmane.org/gmane.comp.jakarta.log4j.devel/10016">this</a>. What
+  is very worrying is to search for the word <i>deadlock</i> in a <a href="http://www.mail-archive.com/log4j-dev@logging.apache.org/msg05460.html">recent bug-list</a>.
 </p>
 
 <p>
   I concluded that Log4J is deadlocking, and most likely because of the
   SocketAppender. As most of the time Chainsaw is not being run on the
   server, Log4J generates loads of warning messages. It will do this if
-  you do not call <a
-  href="http://logging.apache.org/log4j/docs/api/org/apache/log4j/helpers/LogLog.html#setQuietMode(boolean)">setQuietMode(true)</a>.
+  you do not call <a href="http://logging.apache.org/log4j/docs/api/org/apache/log4j/helpers/LogLog.html#setQuietMode(boolean)">setQuietMode(true)</a>.
 </p>
 
 <p>
