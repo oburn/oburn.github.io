@@ -9,26 +9,18 @@ On a previous project the excellent tool <a href="http://findbugs.sf.net">FindBu
 </p>
 <p>
 The approach involves the follow strategy:
-</p><ul>
-<li>
-Run FindBugs and record the number of errors found. This is done once to determine the <i>low water mark</i>.
-</li>
-<li>
-Each time the build is run, calculate the number of errors found, and then use the following logic:
-<ul>
-<li>
-If the number of errors is lower than the existing <i>low water mark</i>, then record the new <i>low water mark</i>.
-</li>
-<li>
-If the number of errors is higher than the existing <i>low water mark</i>, then fail the build as more errors have been introduced.
-</li>
-<li>
-Otherwise, be silent.
-</li>
-</ul>
-</li>
-</ul>
+</p>
 
+<ul>
+<li>Run FindBugs and record the number of errors found. This is done once to determine the <i>low water mark</i>.</li>
+<li>Each time the build is run, calculate the number of errors found, and then use the following logic:
+  <ul>
+    <li>If the number of errors is lower than the existing <i>low water mark</i>, then record the new <i>low water mark</i>.</li>
+    <li>If the number of errors is higher than the existing <i>low water mark</i>, then fail the build as more errors have been introduced.</li>
+    <li>Otherwise, be silent.</li>
+  </ul>
+</li>
+</ul>
 
 <p>
 I implemented this approach using ANT + Groovy, but it could be equally applied with Maven.
