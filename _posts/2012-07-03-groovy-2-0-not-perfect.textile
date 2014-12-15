@@ -12,13 +12,12 @@ tags:
 
 <p>Below is a snippet of code, which you would expect on quick inspection to not compile. This is because the code is attempting to iterate of a list of <code>String</code> objects and treat them as <code>Integer</code> objects.</p>
 
-
-<pre class="src src-groovy">@TypeChecked
-<span style="color: #a020f0;">static</span> <span style="color: #228b22;">void</span> example(List&lt;String&gt; args) {
-   args.each { <span style="color: #228b22;">Integer</span> <span style="color: #a0522d;">it</span> -&gt; println it }
+{% highlight groovy %}
+@TypeChecked
+static void example(List<String> args) {
+   args.each { Integer it -> println it }
 }
-</pre>
-
+{% endhighlight %}
 
 <p>In fact this code will compile, but will fail when executed with a run-time error (since you cannot cast a <code>String</code> to an <code>Integer</code>).</p>
 
