@@ -5,29 +5,22 @@ title: Ratcheting FindBugs errors with ANT
 category: Java
 ---
 <p>
-On a previous project the excellent tool <a href="http://findbugs.sf.net">FindBugs</a> was added to the tool
-chain well after development has underway (500,000 lines of Java code
-already written). I used an approach termed <a href="http://skizz.biz/blog/2008/03/11/fixing-broken-windows-with-ratcheting/">ratcheting</a> to ensure that no
-more errors were introduced to the code base, and that over time the
-number of errors were reduced.
+On a previous project the excellent tool <a href="http://findbugs.sf.net">FindBugs</a> was added to the tool chain well after development has underway (500,000 lines of Java code already written). I used an approach termed <a href="http://skizz.biz/blog/2008/03/11/fixing-broken-windows-with-ratcheting/">ratcheting</a> to ensure that no more errors were introduced to the code base, and that over time the number of errors were reduced.
 </p>
 <p>
 The approach involves the follow strategy:
 </p><ul>
 <li>
-Run FindBugs and record the number of errors found. This is done once
-to determine the <i>low water mark</i>.
+Run FindBugs and record the number of errors found. This is done once to determine the <i>low water mark</i>.
 </li>
 <li>
-Each time the build is run, calculate the number of errors found, and
-then use the following logic:
+Each time the build is run, calculate the number of errors found, and then use the following logic:
 <ul>
 <li>
-If the number of errors is lower than the existing <i>low water mark</i>,
-then record the new <i>low water mark</i>.
+If the number of errors is lower than the existing <i>low water mark</i>, then record the new <i>low water mark</i>.
 </li>
 <li>
-If the number of errors is higher than the existing <i>low water     mark</i>, then fail the build as more errors have been introduced.
+If the number of errors is higher than the existing <i>low water mark</i>, then fail the build as more errors have been introduced.
 </li>
 <li>
 Otherwise, be silent.
@@ -38,14 +31,10 @@ Otherwise, be silent.
 
 
 <p>
-I implemented this approach using ANT + Groovy, but it could be equally
-applied with Maven.
+I implemented this approach using ANT + Groovy, but it could be equally applied with Maven.
 </p>
 <p>
-Since all our builds were done using Hudson CI server, it was run
-automatically as part of the normal build.  We did not use the Hudson
-plug-ins to implement this strategy, because at the time (2009), the
-available plug-ins did not have a way to automatically update the <i>low water mark</i> when it reduced.
+Since all our builds were done using Hudson CI server, it was run automatically as part of the normal build.  We did not use the Hudson plug-ins to implement this strategy, because at the time (2009), the available plug-ins did not have a way to automatically update the <i>low water mark</i> when it reduced.
 </p>
 <p>
 Here is the ANT task I used implement the logic above:
@@ -85,10 +74,7 @@ else if (errors &amp;gt; lowWaterMark) {
 
 
 <p>
-The reason for setting the property <code>findbugs.watermark</code> was that other
-quality checks can be run (like Checkstyle) and reports generated,
-before failing the build. At the end of the build, the following task is
-run:
+The reason for setting the property <code>findbugs.watermark</code> was that other quality checks can be run (like Checkstyle) and reports generated, before failing the build. At the end of the build, the following task is run:
 </p>
 
 
