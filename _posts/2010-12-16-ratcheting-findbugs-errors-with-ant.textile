@@ -32,15 +32,14 @@ Since all our builds were done using Hudson CI server, it was run automatically 
 Here is the ANT task I used implement the logic above:
 </p>
 
+{% highlight xml %}
+  <target name="run-findbugs" depends="-init">
+    <!-- RUN FINDBUGS (exercise left for reader) -->
 
-
-<pre class="src src-nXML">  &lt;target name=<span style="color: #8b2252;">"run-findbugs"</span> depends=<span style="color: #8b2252;">"-init"</span>&gt;
-    &lt;!-- RUN FINDBUGS (exercise left for reader) --&gt;
-
-    &lt;!-- Logic to check if the count has got worst --&gt;
-    &lt;groovy&gt;
-      &lt;arg value=<span style="color: #8b2252;">"${target}/logs/data/findbugs/bier-bugs.xml"</span>/&gt;
-      &lt;arg value=<span style="color: #8b2252;">"${project.root}/.findbugs-lowwatermark"</span>/&gt;
+    <!-- Logic to check if the count has got worst -->
+    <groovy>
+      <arg value="${target}/logs/data/findbugs/bier-bugs.xml"/>
+      <arg value="${project.root}/.findbugs-lowwatermark"/>
 // Get then number of errors found
 def errors = (new XmlSlurper().parse(args[0])).BugInstance.size()
 
@@ -51,63 +50,60 @@ if (lwmf.canRead()) {
     lwmf.eachLine { lowWaterMark = it.toInteger().intValue() }
 }
 
-if (errors &amp;lt; lowWaterMark) {
+if (errors &lt; lowWaterMark) {
     // We have a new record!
-    new File(args[1]).withWriter { out -&gt; out.writeLine(<span style="color: #8b2252;">"${errors}"</span>) }
+    new File(args[1]).withWriter { out -> out.writeLine("${errors}") }
 }
-else if (errors &amp;gt; lowWaterMark) {
+else if (errors &gt; lowWaterMark) {
     // Oh dear, we are going backwards.
-    properties[<span style="color: #8b2252;">"findbugs.watermark"</span>] = <span style="color: #8b2252;">"Findbugs error count has increased from ${lowWaterMark} to ${errors}."</span>
+    properties["findbugs.watermark"] = "Findbugs error count has increased from ${lowWaterMark} to ${errors}."
 }
-    &lt;/groovy&gt;
-  &lt;/target&gt;
-</pre>
-
-
+    </groovy>
+  </target>
+{% endhighlight %}
 
 <p>
 The reason for setting the property <code>findbugs.watermark</code> was that other quality checks can be run (like Checkstyle) and reports generated, before failing the build. At the end of the build, the following task is run:
 </p>
 
+{% highlight xml %}
+<target name="-check-failure">
+  <!-- check for unit test failure -->
+  <property file="${target}/test-failure.properties"/>
+  <if>
+    <isset property="bier.test.failed"/>
+    <then>
+      <my-play-sound
+          fname="${project.root}/build/config/sounds/unittests-failed.wav"
+          />
+      <fail message="Unit tests failed. Refer to junit reports for details."/>
+    </then>
+  </if>
 
+  <property file="${target}/checkstyle-failure.properties"/>
+  <if>
+    <isset property="bier.checkstyle.failed"/>
+    <then>
+      <my-play-sound
+          fname="${project.root}/build/config/sounds/checkstyle-failed.wav"
+          />
+      <fail message="Problems with Checkstyle."/>
+    </then>
+  </if>
 
-<pre class="src src-nXML">&lt;target name=<span style="color: #8b2252;">"-check-failure"</span>&gt;
-  &lt;!-- check for unit test failure --&gt;
-  &lt;property file=<span style="color: #8b2252;">"${target}/test-failure.properties"</span>/&gt;
-  &lt;if&gt;
-    &lt;isset property=<span style="color: #8b2252;">"bier.test.failed"</span>/&gt;
-    &lt;then&gt;
-      &lt;my-play-sound
-          fname=<span style="color: #8b2252;">"${project.root}/build/config/sounds/unittests-failed.wav"</span>
-          /&gt;
-      &lt;fail message=<span style="color: #8b2252;">"Unit tests failed. Refer to junit reports for details."</span>/&gt;
-    &lt;/then&gt;
-  &lt;/if&gt;
+  <if>
+    <isset property="findbugs.watermark"/>
+    <then>
+      <echo message="${findbugs.watermark}"/>
+      <echo file="${project.root}/.findbugs-failure"
+            message="${findbugs.watermark}"
+            />
+    </then>
+    <else>
+      <delete file="${project.root}/.findbugs-failure"/>
+    </else>
+  </if>
 
-  &lt;property file=<span style="color: #8b2252;">"${target}/checkstyle-failure.properties"</span>/&gt;
-  &lt;if&gt;
-    &lt;isset property=<span style="color: #8b2252;">"bier.checkstyle.failed"</span>/&gt;
-    &lt;then&gt;
-      &lt;my-play-sound
-          fname=<span style="color: #8b2252;">"${project.root}/build/config/sounds/checkstyle-failed.wav"</span>
-          /&gt;
-      &lt;fail message=<span style="color: #8b2252;">"Problems with Checkstyle."</span>/&gt;
-    &lt;/then&gt;
-  &lt;/if&gt;
-
-  &lt;if&gt;
-    &lt;isset property=<span style="color: #8b2252;">"findbugs.watermark"</span>/&gt;
-    &lt;then&gt;
-      &lt;echo message=<span style="color: #8b2252;">"${findbugs.watermark}"</span>/&gt;
-      &lt;echo file=<span style="color: #8b2252;">"${project.root}/.findbugs-failure"</span>
-            message=<span style="color: #8b2252;">"${findbugs.watermark}"</span>
-            /&gt;
-    &lt;/then&gt;
-    &lt;else&gt;
-      &lt;delete file=<span style="color: #8b2252;">"${project.root}/.findbugs-failure"</span>/&gt;
-    &lt;/else&gt;
-  &lt;/if&gt;
-
-  &lt;echo&gt;The build has finished successfully.&lt;/echo&gt;
-&lt;/target&gt;
-</pre>
+  <echo>The build has finished successfully.</echo>
+</target>
+{% endhighlight %}
