@@ -50,11 +50,11 @@ if (lwmf.canRead()) {
     lwmf.eachLine { lowWaterMark = it.toInteger().intValue() }
 }
 
-if (errors &lt; lowWaterMark) {
+if (errors < lowWaterMark) {
     // We have a new record!
     new File(args[1]).withWriter { out -> out.writeLine("${errors}") }
 }
-else if (errors &gt; lowWaterMark) {
+else if (errors > lowWaterMark) {
     // Oh dear, we are going backwards.
     properties["findbugs.watermark"] = "Findbugs error count has increased from ${lowWaterMark} to ${errors}."
 }
