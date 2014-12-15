@@ -4,16 +4,9 @@ permalink: blog/getting_closure_with_groovy_curry
 title: Getting closure with Groovy curry
 category: Java
 ---
-<p class="first">I have been using <a href="http://groovy.codehaus.org/">Groovy</a> for a while now. Initially for small scripts,
-but overtime for bigger tasks. The more I use it, the more I am
-impressed with it's features. Recently I had to generate a number of
-detailed reports on the performance of the web applications that make up
-the system I'm working on. During this process I discovered a whole new
-appreciation for <a href="http://groovy.codehaus.org/Closures">Closures</a> and, in particular, <a href="http://en.wikipedia.org/wiki/Currying">currying</a> them. A good
-tutorial on this is <a href="http://www.ibm.com/developerworks/java/library/j-pg08235/index.html">here</a>.</p>
+<p class="first">I have been using <a href="http://groovy.codehaus.org/">Groovy</a> for a while now. Initially for small scripts, but overtime for bigger tasks. The more I use it, the more I am impressed with it's features. Recently I had to generate a number of detailed reports on the performance of the web applications that make up the system I'm working on. During this process I discovered a whole new appreciation for <a href="http://groovy.codehaus.org/Closures">Closures</a> and, in particular, <a href="http://en.wikipedia.org/wiki/Currying">currying</a> them. A good tutorial on this is <a href="http://www.ibm.com/developerworks/java/library/j-pg08235/index.html">here</a>.</p>
 
-<p>To show my readers a practical example of what is possible, here is the
-class I wrote for tracking the statistics associated with a <a href="http://en.wikipedia.org/wiki/Uniform_Resource_Identifier">URI</a>.</p>
+<p>To show my readers a practical example of what is possible, here is the class I wrote for tracking the statistics associated with a <a href="http://en.wikipedia.org/wiki/Uniform_Resource_Identifier">URI</a>.</p>
 
 <pre class="src">
 <span style="color: #a020f0;">package</span> htanalysis
