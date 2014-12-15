@@ -4,10 +4,7 @@ permalink: blog/teach_an_old_dog_new
 title: Teach an old dog new tricks (or now using Classycle)
 category: Java
 ---
-<p>Thanks to <a href="http://blog.adjective.org/">Tim Vernum</a> for <a href="http://www.jroller.com/oburn/entry/detecting_cycles_with_ant_jdepend#comment-1242441803000">responding</a> to my last post about
-<a href="http://www.jroller.com/oburn/entry/detecting_cycles_with_ant_jdepend">Detecting Cycles with ANT/JDepend</a>, I now know about the tool <a href="http://classycle.sourceforge.net/">Classycle</a>
-which is much better suited for the task. Here is the ANT target I added
-to my <code>build.xml</code> file replacing the old approach:</p>
+<p>Thanks to <a href="http://blog.adjective.org/">Tim Vernum</a> for <a href="http://www.jroller.com/oburn/entry/detecting_cycles_with_ant_jdepend#comment-1242441803000">responding</a> to my last post about <a href="http://www.jroller.com/oburn/entry/detecting_cycles_with_ant_jdepend">Detecting Cycles with ANT/JDepend</a>, I now know about the tool <a href="http://classycle.sourceforge.net/">Classycle</a> which is much better suited for the task. Here is the ANT target I added to my <code>build.xml</code> file replacing the old approach:</p>
 
 <pre class="src">
   &lt;<span style="color: #0000ff;">target</span> <span style="color: #b8860b;">name</span>=<span style="color: #bc8f8f;">"classycle"</span> <span style="color: #b8860b;">depends</span>=<span style="color: #bc8f8f;">"-init"</span>&gt;
@@ -33,20 +30,12 @@ to my <code>build.xml</code> file replacing the old approach:</p>
   &lt;/<span style="color: #0000ff;">target</span>&gt;
 </pre>
 
-<p>As you can see this is a lot smaller and simpler than the previous
-approach.</p>
+<p>As you can see this is a lot smaller and simpler than the previous approach.</p>
 
 <p>Some notes:</p>
 
 <ul>
-<li>Another nice advantage of this approach is that you do not need to
-<code>classcyle.jar</code> to your <code>${ANT_HOME}/lib</code> directory. With the JDepend
-approach you need to add the JDepend JAR file to the
+<li>Another nice advantage of this approach is that you do not need to <code>classcyle.jar</code> to your <code>${ANT_HOME}/lib</code> directory. With the JDepend approach you need to add the JDepend JAR file to the <code>${ANT_HOME}/lib</code> directory.</li>
 
-<code>${ANT_HOME}/lib</code> directory.</li>
-
-<li>I still use the Checkstyle <a href="http://checkstyle.sourceforge.net/config_imports.html#ImportControl">ImportControl check</a> for enforcing the
-project layering/dependency rules. The immediate feedback this
-gives in the Eclipse IDE via the <a href="http://eclipse-cs.sourceforge.net/">eclipse-cs</a> is invaluable. That
-said, Classycle looks <a href="http://classycle.sourceforge.net/ddf.html">very capable</a>.</li>
+<li>I still use the Checkstyle <a href="http://checkstyle.sourceforge.net/config_imports.html#ImportControl">ImportControl check</a> for enforcing the project layering/dependency rules. The immediate feedback this gives in the Eclipse IDE via the <a href="http://eclipse-cs.sourceforge.net/">eclipse-cs</a> is invaluable. That said, Classycle looks <a href="http://classycle.sourceforge.net/ddf.html">very capable</a>.</li>
 </ul>

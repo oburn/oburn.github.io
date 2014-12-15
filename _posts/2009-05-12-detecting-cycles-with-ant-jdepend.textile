@@ -4,10 +4,7 @@ permalink: blog/detecting_cycles_with_ant_jdepend
 title: Detecting Cycles with ANT/JDepend
 category: Java
 ---
-<p class="first">Today I have been inspired by reading <a href="http://girtby.net/archives/2009/05/12/i-fought-the-gorm/">I Fought The Gorm</a> to blog
-something. So I will blog to share how I use <a href="http://clarkware.com/software/JDepend.html">JDepend</a> in an ANT target to
-fail the build if a package cycle is detected (yes I really hate
-<a href="http://www.jroller.com/oburn/entry/fight_evil_with_metrics_plug">circular</a> <a href="http://www.jroller.com/oburn/entry/pasta_for_spaghetti_code">dependencies</a>).</p>
+<p class="first">Today I have been inspired by reading <a href="http://girtby.net/archives/2009/05/12/i-fought-the-gorm/">I Fought The Gorm</a> to blog something. So I will blog to share how I use <a href="http://clarkware.com/software/JDepend.html">JDepend</a> in an ANT target to fail the build if a package cycle is detected (yes I really hate <a href="http://www.jroller.com/oburn/entry/fight_evil_with_metrics_plug">circular</a> <a href="http://www.jroller.com/oburn/entry/pasta_for_spaghetti_code">dependencies</a>).</p>
 
 <p>The basic logic of what the target does is:</p>
 
