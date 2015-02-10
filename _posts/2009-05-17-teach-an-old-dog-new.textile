@@ -4,7 +4,7 @@ permalink: blog/teach_an_old_dog_new
 title: Teach an old dog new tricks (or now using Classycle)
 category: Java
 ---
-<p>Thanks to <a href="http://blog.adjective.org/">Tim Vernum</a> for <a href="http://www.jroller.com/oburn/entry/detecting_cycles_with_ant_jdepend#comment-1242441803000">responding</a> to my last post about <a href="http://www.jroller.com/oburn/entry/detecting_cycles_with_ant_jdepend">Detecting Cycles with ANT/JDepend</a>, I now know about the tool <a href="http://classycle.sourceforge.net/">Classycle</a> which is much better suited for the task. Here is the ANT target I added to my <code>build.xml</code> file replacing the old approach:</p>
+<p>Thanks to <a href="http://blog.adjective.org/">Tim Vernum</a> for responding to my last post about <a href="../detecting_cycles_with_ant_jdepend/">Detecting Cycles with ANT/JDepend</a>, I now know about the tool <a href="http://classycle.sourceforge.net/">Classycle</a> which is much better suited for the task. Here is the ANT target I added to my <code>build.xml</code> file replacing the old approach:</p>
 
 {% highlight xml %}
   <target name="classycle" depends="-init">
