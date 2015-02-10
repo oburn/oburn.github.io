@@ -5,7 +5,7 @@ title: Pasta for Spaghetti Code
 category: Java
 ---
 <p>
-I have mentioned <a href="http://www.jroller.com/page/oburn/20030527">before</a> that I think circular dependencies are evil and should be avoided, especially between packages. In fact, I had this very discussion the other day at work.</p>
+I have mentioned <a href="fight_evil_with_metrics_plug/">before</a> that I think circular dependencies are evil and should be avoided, especially between packages. In fact, I had this very discussion the other day at work.</p>
 
 <p>
 What started this conversation was that I have started analysing our source code with a nifty new tool called <a href="http://javacentral.compuware.com/pasta/">Pasta</a> from Compuware which is a Package Structure Analysis Tool. It takes a little getting used to but is excellent.
