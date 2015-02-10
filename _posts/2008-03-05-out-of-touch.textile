@@ -6,10 +6,10 @@ category: Java
 ---
 <p class="first">This week I went to the keynote by James Gosling at the Sun Tech Days here in Sydney. At the end of his presentation, I was left in know doubt that he has really <a href="http://en.wikipedia.org/wiki/Kool-Aid#.22Drinking_the_Kool-Aid.22">drunk the Kool-Aid</a>. Especially when he asked people to stop using Emacs and use Netbeans instead.</p>
 
-<p>Now, as my <a href="http://www.jroller.com/oburn/entry/lego_animated_death_star_canteen#comment-1201690842000">four</a> readers <a href="http://www.jroller.com/oburn/entry/i_still_use_emacs_over">will remember</a>, I am a long time user of Emacs. I would agree that using Emacs for developing Java code is madness, but as a general purpose editor, nothing beats Emacs. For example, in the last week I have been going through log files looking into some production support issues. I even ended up writing the report on the issues using <a href="http://mwolson.org/projects/EmacsMuse.html">Emacs Muse</a> (and this blog entry).
+<p>Now, as my <a href="../lego_animated_death_star_canteen/#comment-1741330742">four</a> readers <a href="../i_still_use_emacs_over/">will remember</a>, I am a long time user of Emacs. I would agree that using Emacs for developing Java code is madness, but as a general purpose editor, nothing beats Emacs. For example, in the last week I have been going through log files looking into some production support issues. I even ended up writing the report on the issues using <a href="http://mwolson.org/projects/EmacsMuse.html">Emacs Muse</a> (and this blog entry).
 
 <p style="text-align: center;">
-<a href="http://www.oreilly.com/catalog/gnuext/"><img src="http://www.oreilly.com/catalog/covers/1565922611_cat.gif"/></a>
+<a href="http://shop.oreilly.com/product/9781565922617.do?sortby=publicationDate"><img src="http://akamaicovers.oreilly.com/images/9781565922617/cat.gif"/></a>
 </p>
 
 
@@ -17,19 +17,19 @@ category: Java
 
 <p>After reading the book, I wrote my first Lisp function, including:</p>
 
-<pre class="src">
-(<span style="color: #a020f0;">defun</span> <span style="color: #0000ff;">oli-filter-buffer-non-matching</span> (regie)
-  <span style="color: #bc8f8f;">"Copies the contents of the current buffer and filters it for non matching lines"</span>
-  (interactive <span style="color: #bc8f8f;">"sRegexp of lines to keep: "</span>)
-  (<span style="color: #a020f0;">let</span> ((buffer (get-buffer-create (concat <span style="color: #bc8f8f;">"filtered-"</span>
-
-                                           (format-time-string <span style="color: #bc8f8f;">"%y%m%d%H%M%S"</span>
+{% highlight lisp %}
+(oli-filter-buffer-non-matching (regie)
+  "Copies the contents of the current buffer and filters it for non matching lines"
+  (interactive "sRegexp of lines to keep: ")
+  (let ((buffer (get-buffer-create (concat "filtered-"
+                                           (format-time-string "%y%m%d%H%M%S"
                                                                (current-time)))))
         (curr-buff (current-buffer)))
-    (<span style="color: #a020f0;">progn</span>
+    (progn
       (set-buffer buffer)
       (insert-buffer curr-buff)
       (delete-non-matching-lines regie)
       (switch-to-buffer-other-window buffer))))
-</pre>
+{% endhighlight %}
+
 
