@@ -23,7 +23,7 @@ category: Computing
 
 <p>I decided to write a small <a href="http://www.autohotkey.com/">AutoHotkey</a> script to support this.</p>
 
-{% highlight autohotkey %}
+<pre class="src">
     ;; Script for running a process. It will first see if the required window
     ;; is running and if so, bring to the foreground. Otherwise will run the
     ;; specified command.
@@ -33,7 +33,7 @@ category: Computing
     ;;   arg 2 - path to process to execute
 
     ;; Check for arguments
-    if 0 < 2
+    if 0 &lt; 2
     {
         MsgBox Need to pass in Window Title and Executable to run
         ExitApp
@@ -48,17 +48,15 @@ category: Computing
     {
         Run, %2%
     }
-{% endhighlight %}
-
+</pre>
 
 <p>I then used the AutoHotkey compiler to create a standalone executable. I could then use the following command-line to either activate the running instance of Firefox or launch it if it is not already running.</p>
 
-{% highlight cmd %}
+<pre class="src">
     prompt% O:\myhome\bin\activate-or-run.exe ^
-                ".* - Mozilla Firefox$" ^
+                <span style="color: #bc8f8f;">".* - Mozilla Firefox$"</span> ^
                 O:\FirefoxPortable\FirefoxPortable.exe
-{% endhighlight %}
-
+</pre>
 
 <p>The arguments are:</p>
 
