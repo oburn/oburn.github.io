@@ -36,9 +36,9 @@ category: Java
   the console, but still check for trailing whitespace. As an example:
 </p>
 
-<pre>
+{% highlight xml %}
   <!-- allow logging to console in database tools -->
   <suppress <b>id="consoleOutput"</b>
             files="[/\\]db[/\\]src[/\\]java[/\\]"
             />
-</pre>
+{% endhighlight %}
