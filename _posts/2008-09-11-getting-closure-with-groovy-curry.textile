@@ -8,87 +8,86 @@ category: Java
 
 <p>To show my readers a practical example of what is possible, here is the class I wrote for tracking the statistics associated with a <a href="http://en.wikipedia.org/wiki/Uniform_Resource_Identifier">URI</a>.</p>
 
-{% highlight groovy %}
-package htanalysis
+<pre class="src">
+<span style="color: #a020f0;">package</span> htanalysis
 
-public class UriStat {
-    // The properties. Groovy will generate the set/get methods.
-    String uri
-    BigDecimal totalCpu
-    BigDecimal totalResponse
-    BigDecimal totalAccessCount
-    BigDecimal worstCpu // yes, you can be lazy with ';'s
-    BigDecimal worstResponse
+<span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">UriStat</span> {
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">The properties. Groovy will generate the set/get methods.
+</span>    <span style="color: #228b22;">String</span> uri
+    <span style="color: #228b22;">BigDecimal</span> totalCpu
+    <span style="color: #228b22;">BigDecimal</span> totalResponse
+    <span style="color: #228b22;">BigDecimal</span> totalAccessCount
+    <span style="color: #228b22;">BigDecimal</span> worstCpu <span style="color: #b22222;">// </span><span style="color: #b22222;">yes, you can be lazy with ';'s</span>
+    <span style="color: #228b22;">BigDecimal</span> worstResponse
 
-    // Declare closures to get a value from an instance. The value
-    // may be based on a formulae. To keep things small, using that
-    // in Groovy:
-    //     - The default argument to a closure is "it"; and
-    //     - Do not need a "return" statement on the last line.
-    public static final def VALUE_TOTAL_CPU = { it.totalCpu }
-    public static final def VALUE_TOTAL_RESPONSE = { it.totalResponse }
-    public static final def VALUE_TOTAL_ACCESSCOUNT = { it.totalAccessCount }
-    public static final def VALUE_WORST_CPU = { it.worstCpu }
-    public static final def VALUE_WORST_RESPONSE = { it.worstResponse }
-    public static final def VALUE_AVG_CPU =
-        { it.totalCpu / it.totalAccessCount } // See a formulae
-    public static final def VALUE_AVG_RESPONSE =
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">Declare closures to get a value from an instance. The value
+</span>    <span style="color: #b22222;">// </span><span style="color: #b22222;">may be based on a formulae. To keep things small, using that
+</span>    <span style="color: #b22222;">// </span><span style="color: #b22222;">in Groovy:
+</span>    <span style="color: #b22222;">//     </span><span style="color: #b22222;">- The default argument to a closure is "it"; and
+</span>    <span style="color: #b22222;">//     </span><span style="color: #b22222;">- Do not need a "return" statement on the last line.
+</span>    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #a020f0;">final</span> <span style="color: #a020f0;">def</span> <span style="color: #228b22;">VALUE_TOTAL_CPU</span> = { it.totalCpu }
+    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #a020f0;">final</span> <span style="color: #a020f0;">def</span> <span style="color: #228b22;">VALUE_TOTAL_RESPONSE</span> = { it.totalResponse }
+    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #a020f0;">final</span> <span style="color: #a020f0;">def</span> <span style="color: #228b22;">VALUE_TOTAL_ACCESSCOUNT</span> = { it.totalAccessCount }
+    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #a020f0;">final</span> <span style="color: #a020f0;">def</span> <span style="color: #228b22;">VALUE_WORST_CPU</span> = { it.worstCpu }
+    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #a020f0;">final</span> <span style="color: #a020f0;">def</span> <span style="color: #228b22;">VALUE_WORST_RESPONSE</span> = { it.worstResponse }
+    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #a020f0;">final</span> <span style="color: #a020f0;">def</span> <span style="color: #228b22;">VALUE_AVG_CPU</span> =
+        { it.totalCpu / it.totalAccessCount } <span style="color: #b22222;">// </span><span style="color: #b22222;">See a formulae
+</span>    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #a020f0;">final</span> <span style="color: #a020f0;">def</span> <span style="color: #228b22;">VALUE_AVG_RESPONSE</span> =
         { it.totalResponse / it.totalAccessCount }
 
-    // This closure compares the values obtained from a two objects
-    // using the first closure to obtain the values from the object.
-    // This is to do something spicy.....
-    private static final def C_GENERIC = { v, o1, o2 -> v(o2) <=> v(o1) };
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">This closure compares the values obtained from a two objects
+</span>    <span style="color: #b22222;">// </span><span style="color: #b22222;">using the first closure to obtain the values from the object.
+</span>    <span style="color: #b22222;">// </span><span style="color: #b22222;">This is to do something spicy.....
+</span>    <span style="color: #a020f0;">private</span> <span style="color: #a020f0;">static</span> <span style="color: #a020f0;">final</span> <span style="color: #a020f0;">def</span> <span style="color: #228b22;">C_GENERIC</span> = { v, o1, o2 -&gt; v(o2) &lt;=&gt; v(o1) };
 
-    // Declare java.util.Comparator instances for comparisons. The
-    // first bit of magic is to use curry(). This allows you to
-    // define a closure based on another closure, but fixing the first
-    // argument to a constant. In this case, the Closure to be used
-    // to obtain the value for comparison. If it makes you feel better,
-    // it took a me a bit of time to realise the power of Curry.
-    //
-    // The second piece of magic is to use "as Comparator" on the
-    // end of the Closure to coerce the type to be java.util.Comparator.
-    public static final Comparator COMP_TOTAL_CPU =
-        C_GENERIC.curry(VALUE_TOTAL_CPU) as Comparator;
-    public static final Comparator COMP_TOTAL_RESPONSE =
-        C_GENERIC.curry(VALUE_TOTAL_RESPONSE) as Comparator;
-    public static final Comparator COMP_TOTAL_ACCESSCOUNT =
-        C_GENERIC.curry(VALUE_TOTAL_ACCESSCOUNT) as Comparator;
-    public static final Comparator COMP_WORST_CPU =
-        C_GENERIC.curry(VALUE_WORST_CPU) as Comparator;
-    public static final Comparator COMP_WORST_RESPONSE =
-        C_GENERIC.curry(VALUE_WORST_RESPONSE) as Comparator;
-    public static final Comparator COMP_AVG_CPU =
-        C_GENERIC.curry(VALUE_AVG_CPU) as Comparator;
-    public static final Comparator COMP_AVG_RESPONSE =
-        C_GENERIC.curry(VALUE_AVG_RESPONSE) as Comparator;
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">Declare java.util.Comparator instances for comparisons. The
+</span>    <span style="color: #b22222;">// </span><span style="color: #b22222;">first bit of magic is to use curry(). This allows you to
+</span>    <span style="color: #b22222;">// </span><span style="color: #b22222;">define a closure based on another closure, but fixing the first
+</span>    <span style="color: #b22222;">// </span><span style="color: #b22222;">argument to a constant. In this case, the Closure to be used
+</span>    <span style="color: #b22222;">// </span><span style="color: #b22222;">to obtain the value for comparison. If it makes you feel better,
+</span>    <span style="color: #b22222;">// </span><span style="color: #b22222;">it took a me a bit of time to realise the power of Curry.
+</span>    <span style="color: #b22222;">//</span><span style="color: #b22222;">
+</span>    <span style="color: #b22222;">// </span><span style="color: #b22222;">The second piece of magic is to use "as Comparator" on the
+</span>    <span style="color: #b22222;">// </span><span style="color: #b22222;">end of the Closure to coerce the type to be java.util.Comparator.
+</span>    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #a020f0;">final</span> <span style="color: #228b22;">Comparator</span> <span style="color: #228b22;">COMP_TOTAL_CPU</span> =
+        <span style="color: #228b22;">C_GENERIC</span>.curry(<span style="color: #228b22;">VALUE_TOTAL_CPU</span>) <span style="color: #a020f0;">as</span> <span style="color: #228b22;">Comparator</span>;
+    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #a020f0;">final</span> <span style="color: #228b22;">Comparator</span> <span style="color: #228b22;">COMP_TOTAL_RESPONSE</span> =
+        <span style="color: #228b22;">C_GENERIC</span>.curry(<span style="color: #228b22;">VALUE_TOTAL_RESPONSE</span>) <span style="color: #a020f0;">as</span> <span style="color: #228b22;">Comparator</span>;
+    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #a020f0;">final</span> <span style="color: #228b22;">Comparator</span> <span style="color: #228b22;">COMP_TOTAL_ACCESSCOUNT</span> =
+        <span style="color: #228b22;">C_GENERIC</span>.curry(<span style="color: #228b22;">VALUE_TOTAL_ACCESSCOUNT</span>) <span style="color: #a020f0;">as</span> <span style="color: #228b22;">Comparator</span>;
+    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #a020f0;">final</span> <span style="color: #228b22;">Comparator</span> <span style="color: #228b22;">COMP_WORST_CPU</span> =
+        <span style="color: #228b22;">C_GENERIC</span>.curry(<span style="color: #228b22;">VALUE_WORST_CPU</span>) <span style="color: #a020f0;">as</span> <span style="color: #228b22;">Comparator</span>;
+    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #a020f0;">final</span> <span style="color: #228b22;">Comparator</span> <span style="color: #228b22;">COMP_WORST_RESPONSE</span> =
+        <span style="color: #228b22;">C_GENERIC</span>.curry(<span style="color: #228b22;">VALUE_WORST_RESPONSE</span>) <span style="color: #a020f0;">as</span> <span style="color: #228b22;">Comparator</span>;
+    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #a020f0;">final</span> <span style="color: #228b22;">Comparator</span> <span style="color: #228b22;">COMP_AVG_CPU</span> =
+        <span style="color: #228b22;">C_GENERIC</span>.curry(<span style="color: #228b22;">VALUE_AVG_CPU</span>) <span style="color: #a020f0;">as</span> <span style="color: #228b22;">Comparator</span>;
+    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #a020f0;">final</span> <span style="color: #228b22;">Comparator</span> <span style="color: #228b22;">COMP_AVG_RESPONSE</span> =
+        <span style="color: #228b22;">C_GENERIC</span>.curry(<span style="color: #228b22;">VALUE_AVG_RESPONSE</span>) <span style="color: #a020f0;">as</span> <span style="color: #228b22;">Comparator</span>;
 
-    // Cache the property names. Means that when more properties are
-    // added to the class, the methods below will take them into account.
-    // Very nice <-- please say it like Borat. :-)
-    private static final List<String> PROPNAMES =
-        UriStat.metaClass.properties.collect({it.name})
-            .findAll({it != "class" &amp;&amp; it != "metaClass"}).sort();
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">Cache the property names. Means that when more properties are
+</span>    <span style="color: #b22222;">// </span><span style="color: #b22222;">added to the class, the methods below will take them into account.
+</span>    <span style="color: #b22222;">// </span><span style="color: #b22222;">Very nice &lt;-- please say it like Borat. :-)
+</span>    <span style="color: #a020f0;">private</span> <span style="color: #a020f0;">static</span> <span style="color: #a020f0;">final</span> <span style="color: #228b22;">List</span>&lt;<span style="color: #228b22;">String</span>&gt; <span style="color: #228b22;">PROPNAMES</span> =
+        <span style="color: #228b22;">UriStat</span>.metaClass.properties.collect({it.name})
+            .findAll({it != <span style="color: #bc8f8f;">"class"</span> &amp;&amp; it != <span style="color: #bc8f8f;">"metaClass"</span>}).sort();
 
-    // Return a nice formatted string of the property values.
-    public String toString() {
-        // Again, you can skip the "return" if you want.
-        "[" + PROPNAMES.collect({ "${it}='${this[it]}'" }).join(',') + "]"
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">Return a nice formatted string of the property values.
+</span>    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">String</span> toString() {
+        <span style="color: #b22222;">// </span><span style="color: #b22222;">Again, you can skip the "return" if you want.
+</span>        <span style="color: #bc8f8f;">"["</span> + <span style="color: #228b22;">PROPNAMES</span>.collect({ <span style="color: #bc8f8f;">"${it}='${this[it]}'"</span> }).join(<span style="color: #bc8f8f;">','</span>) + <span style="color: #bc8f8f;">"]"</span>
 
     }
 
-    // I like default parameters - ah the good old Ada days. :-)
-    public String csvHeader(String sep = ",") {
-        PROPNAMES.join(sep)
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">I like default parameters - ah the good old Ada days. :-)
+</span>    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">String</span> csvHeader(<span style="color: #228b22;">String</span> sep = <span style="color: #bc8f8f;">","</span>) {
+        <span style="color: #228b22;">PROPNAMES</span>.join(sep)
     }
-    // I could have written the above as
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">I could have written the above as
 
-    // public String csvHeader(String sep = ",") { PROPNAMES.join(sep) }
-
-    public String csvValues(String sep = ",") {
-        return PROPNAMES.collect({this[it]?:""}).join(sep)
+</span>    <span style="color: #b22222;">// </span><span style="color: #b22222;">public String csvHeader(String sep = ",") { PROPNAMES.join(sep) }
+</span>
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">String</span> csvValues(<span style="color: #228b22;">String</span> sep = <span style="color: #bc8f8f;">","</span>) {
+        <span style="color: #a020f0;">return</span> <span style="color: #228b22;">PROPNAMES</span>.collect({<span style="color: #a020f0;">this</span>[it]?:<span style="color: #bc8f8f;">""</span>}).join(sep)
     }
 }
-{% endhighlight %}
-
+</pre>
