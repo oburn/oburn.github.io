@@ -5,7 +5,7 @@ title: Example of fine tuned suppressions
 category: Java
 ---
 <p>
-  To follow up on <a href="http://www.jroller.com/page/oburn?entry=checkstyle_4_2_released">my post</a> yesterday about fine tuned suppressions, I thought I would
+  To follow up on <a href="../checkstyle_4_2_released">my post</a> yesterday about fine tuned suppressions, I thought I would
   give an example. Below is what I have defined in the Checkstyle rules
   file:
 </p>
