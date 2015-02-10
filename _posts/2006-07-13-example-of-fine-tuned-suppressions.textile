@@ -38,7 +38,7 @@ category: Java
 
 {% highlight xml %}
   <!-- allow logging to console in database tools -->
-  <suppress <b>id="consoleOutput"</b>
+  <suppress id="consoleOutput"
             files="[/\\]db[/\\]src[/\\]java[/\\]"
             />
 {% endhighlight %}
