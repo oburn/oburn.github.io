@@ -10,6 +10,8 @@ tags:
 
 <p>So, with the <a href="http://www.infoq.com/articles/new-groovy-20">recent announcement</a> of the Groovy 2.0 release, I hoped that the new <a href="http://groovy.codehaus.org/gapi/groovy/transform/TypeChecked.html">TypeChecked</a> annotation would be the <i>silver bullet</i> I had been waiting for. Alas, I have found that, although the <a href="http://groovy.codehaus.org/gapi/groovy/transform/TypeChecked.html">TypeChecked</a> annotation does indeed turn on static type checking, it does not translate to the real world if you are using <a href="http://groovy.codehaus.org/gapi/groovy/lang/Closure.html">closures</a> (which you would if programming in Groovy).</p>
 
+Below is a snippet of code, which you would expect on quick inspection to not compile. This is because the code is attempting to iterate of a list of `String` objects and treat them as `Integer` objects.
+
 <p>Below is a snippet of code, which you would expect on quick inspection to not compile. This is because the code is attempting to iterate of a list of <code>String</code> objects and treat them as <code>Integer</code> objects.</p>
 
 {% highlight groovy %}
