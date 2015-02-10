@@ -34,7 +34,7 @@ category: Java
 </blockquote>
 
 <p>
-  As I have <a href="http://www.jroller.com/page/oburn?entry=log4j_hangs_my_application">blogged in the past</a>, Log4J has caused my application to hang. Now in this case, you can argue that I should have <a href="http://www.readthefuckingmanual.com/">RTFM</a> more carefully. But, how can I call the <tt>remove()</tt> method before exiting a thread? Since I am running in a WebSphere Servlet container, I have no control over the thread life cycle. Also, the documentation for <tt>remove()</tt> does not state what happens when calling the method multiple times when a thread is not exiting.
+  As I have <a href="../log4j_hangs_my_application/">blogged in the past</a>, Log4J has caused my application to hang. Now in this case, you can argue that I should have <a href="http://www.readthefuckingmanual.com/">RTFM</a> more carefully. But, how can I call the <tt>remove()</tt> method before exiting a thread? Since I am running in a WebSphere Servlet container, I have no control over the thread life cycle. Also, the documentation for <tt>remove()</tt> does not state what happens when calling the method multiple times when a thread is not exiting.
 </p>
 
 <p>
