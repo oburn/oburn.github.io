@@ -63,7 +63,7 @@ category: Computing
 <p>The arguments are:</p>
 
 <ol>
-<li><code>".* - Mozilla Firefox$"</code> - regular expression to match on the title of the Mozilla Firefox Window.</li>
+<li><code>&quot;.* - Mozilla Firefox$&quot;</code> - regular expression to match on the title of the Mozilla Firefox Window.</li>
 
 <li><code>O:\FirefoxPortable\FirefoxPortable.exe</code> - the command to launch firefox no matching window title was found.</li>
 </ol>
