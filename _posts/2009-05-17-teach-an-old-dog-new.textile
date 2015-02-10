@@ -6,29 +6,28 @@ category: Java
 ---
 <p>Thanks to <a href="http://blog.adjective.org/">Tim Vernum</a> for <a href="http://www.jroller.com/oburn/entry/detecting_cycles_with_ant_jdepend#comment-1242441803000">responding</a> to my last post about <a href="http://www.jroller.com/oburn/entry/detecting_cycles_with_ant_jdepend">Detecting Cycles with ANT/JDepend</a>, I now know about the tool <a href="http://classycle.sourceforge.net/">Classycle</a> which is much better suited for the task. Here is the ANT target I added to my <code>build.xml</code> file replacing the old approach:</p>
 
-<pre class="src">
-  &lt;<span style="color: #0000ff;">target</span> <span style="color: #b8860b;">name</span>=<span style="color: #bc8f8f;">"classycle"</span> <span style="color: #b8860b;">depends</span>=<span style="color: #bc8f8f;">"-init"</span>&gt;
-    &lt;<span style="color: #0000ff;">taskdef</span> <span style="color: #b8860b;">name</span>=<span style="color: #bc8f8f;">"classycleDependencyCheck"</span>
+{% highlight xml %}
+  <target name="classycle" depends="-init">
+    <taskdef name="classycleDependencyCheck"
+             classname="classycle.ant.DependencyCheckingTask"
+             classpath="${project.root}/build-stuff/tools/classycle-1.3.3/classycle.jar"
+             />
+    <classycleDependencyCheck failOnUnwantedDependencies="true">
 
-             <span style="color: #b8860b;">classname</span>=<span style="color: #bc8f8f;">"classycle.ant.DependencyCheckingTask"</span>
-             <span style="color: #b8860b;">classpath</span>=<span style="color: #bc8f8f;">"${project.root}/build-stuff/tools/classycle-1.3.3/classycle.jar"</span>
-             /&gt;
-    &lt;<span style="color: #0000ff;">classycleDependencyCheck</span> <span style="color: #b8860b;">failOnUnwantedDependencies</span>=<span style="color: #bc8f8f;">"true"</span>&gt;
+      <fileset dir="${mother.target}/dist">
+        <include name="shared-${build.revision}.jar"/>
+        <include name="datareceipt-DO-NOT-USE-${build.revision}.jar"/>
+        <include name="webapp-DO-NOT-USE-${build.revision}.jar"/>
+      </fileset>
 
-      &lt;<span style="color: #0000ff;">fileset</span> <span style="color: #b8860b;">dir</span>=<span style="color: #bc8f8f;">"${mother.target}/dist"</span>&gt;
-        &lt;<span style="color: #0000ff;">include</span> <span style="color: #b8860b;">name</span>=<span style="color: #bc8f8f;">"shared-${build.revision}.jar"</span>/&gt;
-        &lt;<span style="color: #0000ff;">include</span> <span style="color: #b8860b;">name</span>=<span style="color: #bc8f8f;">"datareceipt-DO-NOT-USE-${build.revision}.jar"</span>/&gt;
-
-        &lt;<span style="color: #0000ff;">include</span> <span style="color: #b8860b;">name</span>=<span style="color: #bc8f8f;">"webapp-DO-NOT-USE-${build.revision}.jar"</span>/&gt;
-      &lt;/<span style="color: #0000ff;">fileset</span>&gt;
       show allPaths onlyFailures
       {root} = au.gov.defence.mldef
       [all] = ${root}.*
-      check absenceOfPackageCycles &gt; 1 in [all]
-    &lt;/<span style="color: #0000ff;">classycleDependencyCheck</span>&gt;
+      check absenceOfPackageCycles > 1 in [all]
+    </classycleDependencyCheck>
 
-  &lt;/<span style="color: #0000ff;">target</span>&gt;
-</pre>
+  </target>
+{% endhighlight %}
 
 <p>As you can see this is a lot smaller and simpler than the previous approach.</p>
 
