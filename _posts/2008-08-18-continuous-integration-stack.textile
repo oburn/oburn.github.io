@@ -15,14 +15,12 @@ category: Java
 <li>Code coverage is measured using <a href="http://emma.sourceforge.net/">EMMA</a>.</li>
 
 <li>Static analysis is done using:
-
 <ul>
 <li><a href="http://checkstyle.sourceforge.net/">Checkstyle</a> for coding standards - have zero tolerance for errors.</li>
 <li><a href="http://findbugs.sourceforge.net/">FindBugs</a> for catching bugs - have a policy not allowing any more errors to be introduced and actively trying to reduce to zero.</li>
 <li><a href="http://pmd.sourceforge.net/">PMD</a> in a sweeper role - report generated largely as an FYI.</li>
 </ul></li>
 <li><a href="https://hudson.dev.java.net/">Hudson</a> is the CI server used to automate the process. It is setup with a master and two slave machines. It works a treat!</li>
-
 </ul>
 
 <p>Some of you may be asking why ANT instead of <a href="http://maven.apache.org/">Maven</a>? I use Maven for my personal projects, but am not willing to roll it on a large project. Love it or hate it, the fact is that ANT works everywhere and
