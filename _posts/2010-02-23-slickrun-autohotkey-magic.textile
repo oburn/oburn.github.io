@@ -50,10 +50,9 @@ category: Computing
     }
 {% endhighlight %}
 
-
 <p>I then used the AutoHotkey compiler to create a standalone executable. I could then use the following command-line to either activate the running instance of Firefox or launch it if it is not already running.</p>
 
-{% highlight cmd %}
+{% highlight winbatch %}
     prompt% O:\myhome\bin\activate-or-run.exe ^
                 ".* - Mozilla Firefox$" ^
                 O:\FirefoxPortable\FirefoxPortable.exe
