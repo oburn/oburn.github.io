@@ -20,12 +20,10 @@ category: Java
 {% highlight xml %}
   <target name="jdepend" depends="-init"
           description="Run JDepend to detect cycles"
-
           >
     <!-- Run JDepend to collect data -->
     <mkdir dir="${mother.target}/jdepend"/>
     <jdepend outputfile="${mother.target}/jdepend/mldef-jdepend.xml"
-
              format="xml"
              >
       <exclude name="java.*"/>
@@ -34,7 +32,6 @@ category: Java
       <classespath>
         <pathelement location="${mother.target}/dist/shared-${build.revision}.jar"/>
         <pathelement location="${mother.target}/dist/datareceipt-DO-NOT-USE-${build.revision}.jar"/>
-
         <pathelement location="${mother.target}/dist/webapp-DO-NOT-USE-${build.revision}.jar"/>
       </classespath>
     </jdepend>
@@ -42,24 +39,20 @@ category: Java
     <!-- Generate HTML report -->
     <xslt in="${mother.target}/jdepend/mldef-jdepend.xml"
           out="${mother.target}/jdepend/mldef-jdepend.html"
-
           style="${ant.home}/etc/jdepend.xsl"
           />
 
     <!-- Detect if cycles -->
     <xslt in="${mother.target}/jdepend/mldef-jdepend.xml"
-
           out="${mother.target}/jdepend/cycle-check.txt"
           style="${project.root}/build-stuff/ant/jdepend-cycles-check.xsl"
           />
 
     <!-- Fail if cycles -->
-
     <fail message="There are cycles in the packages, see ${mother.target}/jdepend/mldef-jdepend.html"
           >
       <condition>
         <length file="${mother.target}/jdepend/cycle-check.txt"
-
                 when="gt" length="0"
                 />
       </condition>
@@ -72,7 +65,6 @@ category: Java
 
 {% highlight xml %}
     <xsl:stylesheet
-
       version="1.0"
       xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
       >
@@ -80,13 +72,10 @@ category: Java
 
       <xsl:template match="/JDepend">
         <xsl:apply-templates select="Cycles/Package"/>
-
       </xsl:template>
 
       <xsl:template match="Cycles/Package">
     Cycle involving <xsl:value-of select="@Name"/>
-
       </xsl:template>
     </xsl:stylesheet>
 {% endhighlight %}
-
