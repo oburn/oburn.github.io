@@ -10,26 +10,26 @@ category: Java
   file:
 </p>
 
-<pre>
-  &lt;!-- Look for use of standard out/error. Want to be able
+{% highlight xml %}
+  <!-- Look for use of standard out/error. Want to be able
        to suppress this, so define an id.
-  --&gt;
-  &lt;module name="GenericIllegalRegexp"&gt;
-    <b>&lt;property name="id" value="consoleOutput"/&gt;</b>
-    &lt;property name="format" value="System\.((out|err))\."/&gt;
-    &lt;property name="message" value="Use a logger."/&gt;
-  &lt;/module&gt;
+  -->
+  <module name="GenericIllegalRegexp">
+    <b><property name="id" value="consoleOutput"/></b>
+    <property name="format" value="System\.((out|err))\."/>
+    <property name="message" value="Use a logger."/>
+  </module>
 
-  &lt;!-- Look for trailing whitespace. IDE's add it all the time,
+  <!-- Look for trailing whitespace. IDE's add it all the time,
        causing problems merging branches in Subversion. Never
        want to turn this off.
-  --&gt;
-  &lt;module name="GenericIllegalRegexp"&gt;
-    &lt;property name="format" value="\s$"/&gt;
-    &lt;property name="message"
-              value="Trailing whitespace causes merge HELL!"/&gt;
-  &lt;/module&gt;
-</pre>
+  -->
+  <module name="GenericIllegalRegexp">
+    <property name="format" value="\s$"/>
+    <property name="message"
+              value="Trailing whitespace causes merge HELL!"/>
+  </module>
+{% endhighlight %}
 
 <p>
   So now it is possible to just suppress the warning about logging to
@@ -37,8 +37,8 @@ category: Java
 </p>
 
 <pre>
-  &lt;!-- allow logging to console in database tools --&gt;
-  &lt;suppress <b>id="consoleOutput"</b>
+  <!-- allow logging to console in database tools -->
+  <suppress <b>id="consoleOutput"</b>
             files="[/\\]db[/\\]src[/\\]java[/\\]"
-            /&gt;
+            />
 </pre>
