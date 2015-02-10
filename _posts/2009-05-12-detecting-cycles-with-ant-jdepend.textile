@@ -4,7 +4,7 @@ permalink: blog/detecting_cycles_with_ant_jdepend
 title: Detecting Cycles with ANT/JDepend
 category: Java
 ---
-<p class="first">Today I have been inspired by reading <a href="http://girtby.net/archives/2009/05/12/i-fought-the-gorm/">I Fought The Gorm</a> to blog something. So I will blog to share how I use <a href="http://clarkware.com/software/JDepend.html">JDepend</a> in an ANT target to fail the build if a package cycle is detected (yes I really hate <a href="http://www.jroller.com/oburn/entry/fight_evil_with_metrics_plug">circular</a> <a href="http://www.jroller.com/oburn/entry/pasta_for_spaghetti_code">dependencies</a>).</p>
+<p class="first">Today I have been inspired by reading <a href="http://girtby.net/archives/2009/05/12/i-fought-the-gorm/">I Fought The Gorm</a> to blog something. So I will blog to share how I use <a href="http://clarkware.com/software/JDepend.html">JDepend</a> in an ANT target to fail the build if a package cycle is detected (yes I really hate <a href="../fight_evil_with_metrics_plug/">circular</a> <a href="../pasta_for_spaghetti_code/">dependencies</a>).</p>
 
 <p>The basic logic of what the target does is:</p>
 
@@ -17,76 +17,76 @@ category: Java
 
 <p>The ANT target is:</p>
 
-<pre class="src">
-  &lt;<span style="color: #0000ff;">target</span> <span style="color: #b8860b;">name</span>=<span style="color: #bc8f8f;">"jdepend"</span> <span style="color: #b8860b;">depends</span>=<span style="color: #bc8f8f;">"-init"</span>
-          <span style="color: #b8860b;">description</span>=<span style="color: #bc8f8f;">"Run JDepend to detect cycles"</span>
+{% highlight xml %}
+  <target name="jdepend" depends="-init"
+          description="Run JDepend to detect cycles"
 
-          &gt;
-    <span style="color: #b22222;">&lt;!-- </span><span style="color: #b22222;">Run JDepend to collect data </span><span style="color: #b22222;">--&gt;</span>
-    &lt;<span style="color: #0000ff;">mkdir</span> <span style="color: #b8860b;">dir</span>=<span style="color: #bc8f8f;">"${mother.target}/jdepend"</span>/&gt;
-    &lt;<span style="color: #0000ff;">jdepend</span> <span style="color: #b8860b;">outputfile</span>=<span style="color: #bc8f8f;">"${mother.target}/jdepend/mldef-jdepend.xml"</span>
+          >
+    <!-- Run JDepend to collect data -->
+    <mkdir dir="${mother.target}/jdepend"/>
+    <jdepend outputfile="${mother.target}/jdepend/mldef-jdepend.xml"
 
-             <span style="color: #b8860b;">format</span>=<span style="color: #bc8f8f;">"xml"</span>
-             &gt;
-      &lt;<span style="color: #0000ff;">exclude</span> <span style="color: #b8860b;">name</span>=<span style="color: #bc8f8f;">"java.*"</span>/&gt;
-      &lt;<span style="color: #0000ff;">exclude</span> <span style="color: #b8860b;">name</span>=<span style="color: #bc8f8f;">"javax.*"</span>/&gt;
+             format="xml"
+             >
+      <exclude name="java.*"/>
+      <exclude name="javax.*"/>
 
-      &lt;<span style="color: #0000ff;">classespath</span>&gt;
-        &lt;<span style="color: #0000ff;">pathelement</span> <span style="color: #b8860b;">location</span>=<span style="color: #bc8f8f;">"${mother.target}/dist/shared-${build.revision}.jar"</span>/&gt;
-        &lt;<span style="color: #0000ff;">pathelement</span> <span style="color: #b8860b;">location</span>=<span style="color: #bc8f8f;">"${mother.target}/dist/datareceipt-DO-NOT-USE-${build.revision}.jar"</span>/&gt;
+      <classespath>
+        <pathelement location="${mother.target}/dist/shared-${build.revision}.jar"/>
+        <pathelement location="${mother.target}/dist/datareceipt-DO-NOT-USE-${build.revision}.jar"/>
 
-        &lt;<span style="color: #0000ff;">pathelement</span> <span style="color: #b8860b;">location</span>=<span style="color: #bc8f8f;">"${mother.target}/dist/webapp-DO-NOT-USE-${build.revision}.jar"</span>/&gt;
-      &lt;/<span style="color: #0000ff;">classespath</span>&gt;
-    &lt;/<span style="color: #0000ff;">jdepend</span>&gt;
+        <pathelement location="${mother.target}/dist/webapp-DO-NOT-USE-${build.revision}.jar"/>
+      </classespath>
+    </jdepend>
 
-    <span style="color: #b22222;">&lt;!-- </span><span style="color: #b22222;">Generate HTML report </span><span style="color: #b22222;">--&gt;</span>
-    &lt;<span style="color: #0000ff;">xslt</span> <span style="color: #b8860b;">in</span>=<span style="color: #bc8f8f;">"${mother.target}/jdepend/mldef-jdepend.xml"</span>
-          <span style="color: #b8860b;">out</span>=<span style="color: #bc8f8f;">"${mother.target}/jdepend/mldef-jdepend.html"</span>
+    <!-- Generate HTML report -->
+    <xslt in="${mother.target}/jdepend/mldef-jdepend.xml"
+          out="${mother.target}/jdepend/mldef-jdepend.html"
 
-          <span style="color: #b8860b;">style</span>=<span style="color: #bc8f8f;">"${ant.home}/etc/jdepend.xsl"</span>
-          /&gt;
+          style="${ant.home}/etc/jdepend.xsl"
+          />
 
-    <span style="color: #b22222;">&lt;!-- </span><span style="color: #b22222;">Detect if cycles </span><span style="color: #b22222;">--&gt;</span>
-    &lt;<span style="color: #0000ff;">xslt</span> <span style="color: #b8860b;">in</span>=<span style="color: #bc8f8f;">"${mother.target}/jdepend/mldef-jdepend.xml"</span>
+    <!-- Detect if cycles -->
+    <xslt in="${mother.target}/jdepend/mldef-jdepend.xml"
 
-          <span style="color: #b8860b;">out</span>=<span style="color: #bc8f8f;">"${mother.target}/jdepend/cycle-check.txt"</span>
-          <span style="color: #b8860b;">style</span>=<span style="color: #bc8f8f;">"${project.root}/build-stuff/ant/jdepend-cycles-check.xsl"</span>
-          /&gt;
+          out="${mother.target}/jdepend/cycle-check.txt"
+          style="${project.root}/build-stuff/ant/jdepend-cycles-check.xsl"
+          />
 
-    <span style="color: #b22222;">&lt;!-- </span><span style="color: #b22222;">Fail if cycles </span><span style="color: #b22222;">--&gt;</span>
+    <!-- Fail if cycles -->
 
-    &lt;<span style="color: #0000ff;">fail</span> <span style="color: #b8860b;">message</span>=<span style="color: #bc8f8f;">"There are cycles in the packages, see ${mother.target}/jdepend/mldef-jdepend.html"</span>
-          &gt;
-      &lt;<span style="color: #0000ff;">condition</span>&gt;
-        &lt;<span style="color: #0000ff;">length</span> <span style="color: #b8860b;">file</span>=<span style="color: #bc8f8f;">"${mother.target}/jdepend/cycle-check.txt"</span>
+    <fail message="There are cycles in the packages, see ${mother.target}/jdepend/mldef-jdepend.html"
+          >
+      <condition>
+        <length file="${mother.target}/jdepend/cycle-check.txt"
 
-                <span style="color: #b8860b;">when</span>=<span style="color: #bc8f8f;">"gt"</span> <span style="color: #b8860b;">length</span>=<span style="color: #bc8f8f;">"0"</span>
-                /&gt;
-      &lt;/<span style="color: #0000ff;">condition</span>&gt;
-    &lt;/<span style="color: #0000ff;">fail</span>&gt;
+                when="gt" length="0"
+                />
+      </condition>
+    </fail>
 
-  &lt;/<span style="color: #0000ff;">target</span>&gt;
-</pre>
+  </target>
+{% endhighlight %}
 
 <p>The contents of <code>jdepend-cycles-check.xsl</code> is:</p>
 
-<pre class="src">
-    &lt;<span style="color: #da70d6;">xsl</span>:<span style="color: #0000ff;">stylesheet</span>
+{% highlight xml %}
+    <xsl:stylesheet
 
-      <span style="color: #b8860b;">version</span>=<span style="color: #bc8f8f;">"1.0"</span>
-      <span style="color: #da70d6;">xmlns</span>:<span style="color: #b8860b;">xsl</span>=<span style="color: #bc8f8f;">"http://www.w3.org/1999/XSL/Transform"</span>
-      &gt;
-      &lt;<span style="color: #da70d6;">xsl</span>:<span style="color: #0000ff;">output</span> <span style="color: #b8860b;">method</span>=<span style="color: #bc8f8f;">"text"</span> <span style="color: #b8860b;">indent</span>=<span style="color: #bc8f8f;">"no"</span>/&gt;
+      version="1.0"
+      xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+      >
+      <xsl:output method="text" indent="no"/>
 
-      &lt;<span style="color: #da70d6;">xsl</span>:<span style="color: #0000ff;">template</span> <span style="color: #b8860b;">match</span>=<span style="color: #bc8f8f;">"/JDepend"</span>&gt;
-        &lt;<span style="color: #da70d6;">xsl</span>:<span style="color: #0000ff;">apply-templates</span> <span style="color: #b8860b;">select</span>=<span style="color: #bc8f8f;">"Cycles/Package"</span>/&gt;
+      <xsl:template match="/JDepend">
+        <xsl:apply-templates select="Cycles/Package"/>
 
-      &lt;/<span style="color: #da70d6;">xsl</span>:<span style="color: #0000ff;">template</span>&gt;
+      </xsl:template>
 
-      &lt;<span style="color: #da70d6;">xsl</span>:<span style="color: #0000ff;">template</span> <span style="color: #b8860b;">match</span>=<span style="color: #bc8f8f;">"Cycles/Package"</span>&gt;
-    Cycle involving &lt;<span style="color: #da70d6;">xsl</span>:<span style="color: #0000ff;">value-of</span> <span style="color: #b8860b;">select</span>=<span style="color: #bc8f8f;">"@Name"</span>/&gt;
+      <xsl:template match="Cycles/Package">
+    Cycle involving <xsl:value-of select="@Name"/>
 
-      &lt;/<span style="color: #da70d6;">xsl</span>:<span style="color: #0000ff;">template</span>&gt;
-    &lt;/<span style="color: #da70d6;">xsl</span>:<span style="color: #0000ff;">stylesheet</span>&gt;
-</pre>
+      </xsl:template>
+    </xsl:stylesheet>
+{% endhighlight %}
 
