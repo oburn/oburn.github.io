@@ -11,16 +11,15 @@ copying text from Microsoft Word into Javadoc comments.</p>
 <p><strong>Solution:</strong> Use the Checkstyle <a href="http://checkstyle.sourceforge.net/config_misc.html#GenericIllegalRegexp">GenericIllegalRegexp</a> check to prevent
 anything but pure ASCII characters. Use the following configuration:</p>
 
-<pre class="src">
-    &lt;module name=<span style="color: #bc8f8f;">"GenericIllegalRegexp"</span>&gt;
-      &lt;property name=<span style="color: #bc8f8f;">"format"</span> value=<span style="color: #bc8f8f;">"[^\x00-\x7F]"</span>/&gt;
-      &lt;property name=<span style="color: #bc8f8f;">"message"</span> value=<span style="color: #bc8f8f;">"Only use ASCII characters."</span>/&gt;
-
-    &lt;/module&gt;
-</pre>
+{% highlight xml %}
+    <module name="GenericIllegalRegexp">
+      <property name="format" value="[^\x00-\x7F]"/>
+      <property name="message" value="Only use ASCII characters."/>
+    </module>
+{% endhighlight %}
 
 <p>The <em>&quot;magic&quot;</em> is in the regular expression <code>[^\x00-\x7F]</code>, which says to
-disallow any characters that are not ASCII. This should keep my <a href="http://www.jroller.com/oburn/entry/lego_animated_death_star_canteen#comment-1201690842000">fourth</a>
+disallow any characters that are not ASCII. This should keep my <a href="../lego_animated_death_star_canteen#comment-1741330742">fourth</a>
 reader happy. :-)</p>
 
 
