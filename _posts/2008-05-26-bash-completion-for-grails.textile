@@ -35,3 +35,4 @@ complete -F _grails grails
 <p>This approach uses the variable <code>GRAILS_TARGETS</code> to contain the list of Grails targets. It is lazily evaluated as it is expensive to calculate. Now of course you may still prefer the <a href="http://www.davisworld.org/blojsom/blog/default/2007/04/06/Tab-completion-101.html">other approach</a>.</p>
 
 <p>PS: I am back to using <a href="http://mwolson.org/projects/EmacsMuse.html">Emacs Muse</a> for writing Blog entries.</p>
+
