@@ -14,7 +14,6 @@ prompt% grails create-domain-class book
 
 {% highlight bash %}
 # Setup completion for grails. Lazy load the words and do it once only.
-
 _grails()
 {
   local cur prev
