@@ -38,11 +38,11 @@ category: Java
   So to use Tor's example, the setter method would be written as:
 </p>
 
-<pre>
+{% highlight java %}
   void setTemperature(int temperature) {
       mTemperature = temperature;
   }
-</pre>
+{% endhighlight %}
 
 <p>
   Advantages of this style are:
