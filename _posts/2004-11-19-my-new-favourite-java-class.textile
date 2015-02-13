@@ -28,7 +28,7 @@ category: Java
   the Javadoc and this <a href="http://tinyurl.com/3uc9g">helpful guide</a> I knocked up the following class:
 </p>
 
-<pre>
+{% highlight java %}
 package com.puppycrawl.mirage;
 
 import java.io.IOException;
@@ -163,7 +163,7 @@ class SqlAnalyzer
         }
     }
 }
-</pre>
+{% endhighlight %}
 
 <p>
   Hence the <a href="http://tinyurl.com/6bk6r">StreamTokenizer</a> is
