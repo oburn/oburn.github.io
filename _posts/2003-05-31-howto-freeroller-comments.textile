@@ -26,19 +26,19 @@ This will make the rendering of the weblog entries use my "_day" template. I the
 </p>
 
 {% highlight velocity %}
-    <div class="entry">
-       $macros.showDayPermalink()
-       $macros.showEntryDate()
-    </div>
-    
-    #foreach( $entry in $entries )
-    <p>
-       <b>$entry.title</b> $entry.text 
-       <span class="dateStamp">($entry.pubTime)</span>
-        $macros.showEntryPermalink( $entry )
-        $macros.showCommentsLink($entry)
-    </p>
-    #end
+<div class="entry">
+   $macros.showDayPermalink()
+   $macros.showEntryDate()
+</div>
+
+#foreach( $entry in $entries )
+<p>
+   <b>$entry.title</b> $entry.text 
+   <span class="dateStamp">($entry.pubTime)</span>
+    $macros.showEntryPermalink( $entry )
+    $macros.showCommentsLink($entry)
+</p>
+#end
 {% endhighlight %}
 
 <p>
