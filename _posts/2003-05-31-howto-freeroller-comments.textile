@@ -8,17 +8,17 @@ category: Java
 I maybe slow, but I finally got comments working in FreeRoller. To get there, I had to change the following line in my Weblog page:
 </p>
 
-<pre>
+{% highlight velocity %}
     $macros.showWeblogEntries()
-</pre>
+{% endhighlight %}
 
 <p>
 to:
 </p>
 
-<pre>
+{% highlight velocity %}
     $macros.showWeblogEntries("_day")
-</pre>
+{% endhighlight %}
 
 
 <p>
