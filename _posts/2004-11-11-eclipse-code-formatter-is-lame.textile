@@ -18,21 +18,22 @@ category: Java
   code like the following:
 </p>
 
-<pre>
-  final MyInputTokeniser mit = new MyInputTokeniser(
-      new GZIPInputStream(new FileInputStream(f)));
-</pre>
+{% highlight java %}
+final MyInputTokeniser mit = new MyInputTokeniser(
+    new GZIPInputStream(new FileInputStream(f)));
+{% endhighlight %}
 
 <p>
   But when I reformat the code, Eclipse changes it to:
 </p>
 
+{% highlight java %}
 <pre>
-  final MyInputTokeniser mit = new MyInputTokeniser(
-                                                    new GZIPInputStream(
-                                                                        new FileInputStream(
-                                                                                            f)));
-</pre>
+final MyInputTokeniser mit = new MyInputTokeniser(
+                                                  new GZIPInputStream(
+                                                                      new FileInputStream(
+                                                                                          f)));
+{% endhighlight %}
 
 <p>
   This as far as I am concerned is <b>really lame</b>! To make matters
@@ -52,8 +53,8 @@ category: Java
   For the example above, I have had to write:
 </p>
 
-<pre>
-  final FileInputStream fis = new FileInputStream(f);
-  final GZIPInputStream gis = new GZIPInputStream(fis);
-  final MyInputTokeniser mit = new MyInputTokeniser(gis);
-</pre>
+{% highlight java %}
+final FileInputStream fis = new FileInputStream(f);
+final GZIPInputStream gis = new GZIPInputStream(fis);
+final MyInputTokeniser mit = new MyInputTokeniser(gis);
+{% endhighlight %}
