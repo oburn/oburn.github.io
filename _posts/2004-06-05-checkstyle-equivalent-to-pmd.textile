@@ -10,36 +10,37 @@ As one of the developers of Checkstyle, I am always interesting in articles abou
 
 <p>
 So for a bit of fun I thought I would rewrite the example given in the article showing how to find classes that are not declared in a package. The resulting Check for Checkstyle is:
-<pre>
-    package sample;
+</p>
 
-    import com.puppycrawl.tools.checkstyle.api.Check;
-    import com.puppycrawl.tools.checkstyle.api.DetailAST;
-    import com.puppycrawl.tools.checkstyle.api.TokenTypes;
+{% highlight java %}
+package sample;
 
-    public class AllClassesMustHaveAPackage extends Check {
-        private boolean mNoPackage;
+import com.puppycrawl.tools.checkstyle.api.Check;
+import com.puppycrawl.tools.checkstyle.api.DetailAST;
+import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 
-        public int[] getDefaultTokens() {
-            return new int[]{TokenTypes.PACKAGE_DEF};
-        }
+public class AllClassesMustHaveAPackage extends Check {
+    private boolean mNoPackage;
 
-        public void beginTree(DetailAST root) {
-            mNoPackage = true;
-        }
+    public int[] getDefaultTokens() {
+        return new int[]{TokenTypes.PACKAGE_DEF};
+    }
 
-        public void visitToken(DetailAST ignored) {
-            mNoPackage = false;
-        }
+    public void beginTree(DetailAST root) {
+        mNoPackage = true;
+    }
 
-        public void finishTree(DetailAST root) {
-            if (mNoPackage) {
-                log(root, &quot;All types must have a package.&quot;);
-            }
+    public void visitToken(DetailAST ignored) {
+        mNoPackage = false;
+    }
+
+    public void finishTree(DetailAST root) {
+        if (mNoPackage) {
+            log(root, &quot;All types must have a package.&quot;);
         }
     }
-</pre>
-</p>
+}
+{% endhighlight %}
 
 <p>
 This check will only report of files that do not have a declared package. I suspect the example shown by Tom Wheeler in the article will fire for every class declared in a file. It also will not fire for interfaces. I would be interested to hear from people more skilled in PMD than me if I am wrong.
