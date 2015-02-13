@@ -24,20 +24,20 @@ category: Java
       So imagine how I react when I get an email like this today:
     </p>
 
-    <pre>
-      Subject: Please respond ASAP
+{% highlight text %}
+Subject: Please respond ASAP
 
-      Hi,
+Hi,
 
-      I am using the ChainSaw, as per the documentation, iam able to see
-      the appln running.  When i try to upload the file, It gives the
-      message " Loaded 0 Events ".
+I am using the ChainSaw, as per the documentation, iam able to see
+the appln running.  When i try to upload the file, It gives the
+message " Loaded 0 Events ".
 
-      Pls let me know ASAP.
+Pls let me know ASAP.
 
-      Thanks &amp; Regards
-      SHiva
-    </pre>
+Thanks &amp; Regards
+SHiva
+{% endhighlight %}
 
     <p>
       It certainly does not motivate me to respond as:
