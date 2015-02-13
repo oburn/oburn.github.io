@@ -25,21 +25,21 @@ to:
 This will make the rendering of the weblog entries use my "_day" template. I then used the following for the "_day" template:
 </p>
 
-<pre>
-    &lt;div class="entry"&gt;
+{% highlight groovy %}
+    <div class="entry">
        $macros.showDayPermalink()
        $macros.showEntryDate()
-    &lt;/div&gt;
+    </div>
     
     #foreach( $entry in $entries )
-    &lt;p&gt;
-       &lt;b&gt;$entry.title&lt;/b&gt; $entry.text 
-       &lt;span class="dateStamp"&gt;($entry.pubTime)&lt;/span&gt;
+    <p>
+       <b>$entry.title</b> $entry.text 
+       <span class="dateStamp">($entry.pubTime)</span>
         $macros.showEntryPermalink( $entry )
         $macros.showCommentsLink($entry)
-    &lt;/p&gt;
+    </p>
     #end
-</pre>
+{% endhighlight %}
 
 <p>
 I hope that some people out there find this information useful. If you do, please feel free to leave a comment. ;-)
