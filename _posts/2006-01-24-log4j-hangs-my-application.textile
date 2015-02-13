@@ -57,7 +57,7 @@ category: Java
 </p>
 
 
-<pre style="font-size: 0.75em">
+{% highlight text %}
 Thread dump :&quot;WebContainer : 4&quot;  Shrink idle threads:on. - disable
 
 Thread dump 1/1
@@ -84,7 +84,7 @@ Thread dump 1/1
   at org.apache.log4j.Category.forcedLog(Category.java:379)
   at org.apache.log4j.Category.debug(Category.java:248)
   ...
-</pre>
+{% endhighlight %}
 
 <p>
   The stack trace reveals that the thread was blocked in the Log4J code,
