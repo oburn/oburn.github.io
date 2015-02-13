@@ -6,32 +6,31 @@ category: Java
 ---
 <p class="first">I have been using <a href="http://grails.org/">Grails</a> a bit recently (may be the subject of a Blog entry later). There is often the need dive out to the command line to run stuff like:</p>
 
-<pre class="src">
-  prompt% grails create-domain-class book
-
-</pre>
+{% highlight bash %}
+prompt% grails create-domain-class book
+{% endhighlight %}
 
 <p>This has coincided with wanting to learn more about the <a href="http://www.linux.com/articles/54005">auto complete feature</a> of bash. I found <a href="http://doylecentral.com/?page=grails-tips">this tip</a> from Doyle of DoyleCentral.com but, to me, it is deficient in that it has a hard coded list of Grails targets. So, I decided to spin my own that gets the list of targets from Grails. Here is what I put into my <code>.bashrc</code> file:</p>
 
-<pre class="src">
-  <span style="color: #b22222;"># </span><span style="color: #b22222;">Setup completion for grails. Lazy load the words and do it once only.
+{% highlight bash %}
+# Setup completion for grails. Lazy load the words and do it once only.
 
-</span>  _grails()
-  {
-    local cur prev
-    <span style="color: #b8860b;">COMPREPLY</span>=()
-    <span style="color: #b8860b;">cur</span>=<span style="color: #bc8f8f;">"${COMP_WORDS[COMP_CWORD]}"</span>
-    <span style="color: #b8860b;">prev</span>=<span style="color: #bc8f8f;">"${COMP_WORDS[COMP_CWORD-1]}"</span>
+_grails()
+{
+  local cur prev
+  COMPREPLY=()
+  cur="${COMP_WORDS[COMP_CWORD]}"
+  prev="${COMP_WORDS[COMP_CWORD-1]}"
 
-    <span style="color: #a020f0;">if</span> [ -z <span style="color: #bc8f8f;">"${GRAILS_TARGETS}"</span> ]; <span style="color: #a020f0;">then</span>
+  if [ -z "${GRAILS_TARGETS}" ]; then
 
-      <span style="color: #b8860b;">GRAILS_TARGETS</span>=$(<span style="color: #a020f0;">for</span> i<span style="color: #a020f0;"> in</span> <span style="color: #ff00ff;">`grails help | grep '^grails ' | sed 's/^grails *//'`</span>; <span style="color: #a020f0;">do </span><span style="color: #da70d6;">echo</span> -n <span style="color: #bc8f8f;">"$i "</span>; <span style="color: #a020f0;">done</span>)
-    <span style="color: #a020f0;">fi</span>
+    GRAILS_TARGETS=$(for i in `grails help | grep '^grails ' | sed 's/^grails *//'`; do echo -n "$i "; done)
+  fi
 
-    <span style="color: #b8860b;">COMPREPLY</span>=( $(compgen -W <span style="color: #bc8f8f;">"${GRAILS_TARGETS}"</span> -- ${<span style="color: #b8860b;">cur</span>}) )
-  }
-  complete -F _grails grails
-</pre>
+  COMPREPLY=( $(compgen -W "${GRAILS_TARGETS}" -- ${cur}) )
+}
+complete -F _grails grails
+{% endhighlight %}
 
 <p>This approach uses the variable <code>GRAILS_TARGETS</code> to contain the list of Grails targets. It is lazily evaluated as it is expensive to calculate. Now of course you may still prefer the <a href="http://www.davisworld.org/blojsom/blog/default/2007/04/06/Tab-completion-101.html">other approach</a>.</p>
 
