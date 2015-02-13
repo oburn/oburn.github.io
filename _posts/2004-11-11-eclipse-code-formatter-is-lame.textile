@@ -28,7 +28,6 @@ final MyInputTokeniser mit = new MyInputTokeniser(
 </p>
 
 {% highlight java %}
-<pre>
 final MyInputTokeniser mit = new MyInputTokeniser(
                                                   new GZIPInputStream(
                                                                       new FileInputStream(
