@@ -50,9 +50,11 @@ void setTemperature(int temperature) {
   <ul>
     <li>
       Misalignments stand out, as in:
-      <pre>  void setTemperature(int temperature) {
-      mTemperature = mTemperature;
-  }</pre>
+{% highlight java %}
+void setTemperature(int temperature) {
+    mTemperature = mTemperature;
+}
+{% endhighlight %}
     </li>
     <li>
       You can still use <i>nice</i> English names for parameters and
