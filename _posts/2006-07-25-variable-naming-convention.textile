@@ -61,7 +61,7 @@ void setTemperature(int temperature) {
     <li>
       It is easier when reading code fragments (for example diffs) to determine the scope of a variable. For example, it is easy to read the following code fragment:
 {% highlight java %}
-if (mTemperature &lt; predictedTemperature) {
+if (mTemperature < predictedTemperature) {
     mTemperature = predictedTemperature;
     fireNewMaximum(mTemperature);
 }
