@@ -12,38 +12,38 @@ I recently posted a <a href="/page/oburn/20030531#howto_freeroller_comments">HOW
 Originally I gave the complete source to the <i>"_day"</i> template. For completeness, here is my current <i>"Weblog"</i> template:
 </p>
 
-<pre>
-&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
-&lt;html&gt;
-&lt;head&gt;
- &lt;title&gt;#showWebsiteTitle()&lt;/title&gt;
- &lt;style type=&quot;text/css&quot;&gt;#includePage(&quot;_css&quot;)&lt;/style&gt;
-&lt;/head&gt;
+{% highlight html %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+ <title>#showWebsiteTitle()</title>
+ <style type="text/css">#includePage("_css")</style>
+</head>
 
-&lt;body background=&quot;/roller/images/bg-greylines.gif&quot;&gt;
+<body background="/roller/images/bg-greylines.gif">
 
-&lt;table cellpadding=&quot;5&quot; cellspacing=&quot;5&quot; border=&quot;1&quot; align=&quot;center&quot; width=&quot;98%&quot;&gt;
-  &lt;tbody&gt;
-  &lt;tr&gt;
-    &lt;td width=&quot;20%&quot; valign=&quot;top&quot; bgcolor=&quot;#ffffff&quot;&gt;
-      #showBasicNavBar(true)&lt;br&gt;
-      RSS Feed: #showRSSBadge()&lt;br&gt;
-      &lt;br&gt;
-      #showWeblogCalendar()&lt;br&gt;
-      #showBookmarks(&quot;Fav Blogs&quot; true false)&lt;br&gt; 
-      #showReferers(15 10)&lt;br&gt;
-      #showEditorNavBar(true)&lt;br&gt;
-    &lt;/td&gt;
+<table cellpadding="5" cellspacing="5" border="1" align="center" width="98%">
+  <tbody>
+  <tr>
+    <td width="20%" valign="top" bgcolor="#ffffff">
+      #showBasicNavBar(true)<br>
+      RSS Feed: #showRSSBadge()<br>
+      <br>
+      #showWeblogCalendar()<br>
+      #showBookmarks("Fav Blogs" true false)<br> 
+      #showReferers(15 10)<br>
+      #showEditorNavBar(true)<br>
+    </td>
 
-    &lt;td width=&quot;80%&quot; valign=&quot;top&quot; bgcolor=&quot;#ffffff&quot;&gt;
-      &lt;h2&gt;#showWebsiteTitle()&lt;/h2&gt;
-      #showWeblogCategoryChooser()&lt;br&gt;
-      #showWeblogEntries(&quot;_day&quot; 20)
-    &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+    <td width="80%" valign="top" bgcolor="#ffffff">
+      <h2>#showWebsiteTitle()</h2>
+      #showWeblogCategoryChooser()<br>
+      #showWeblogEntries("_day" 20)
+    </td>
+  </tr>
+  </tbody>
+</table>
 
-&lt;/body&gt;
-&lt;/html&gt;
-</pre>
+</body>
+</html>
+{% endhighlight %}
