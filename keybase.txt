@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/oliverburn
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://www.puppycrawl.com
+  * I am oliverburn (https://keybase.io/oliverburn) on keybase.
+  * I have a public key with fingerprint 3E4C 5FEB AFEA 3E4C 5CFF  C1D4 1069 662C 399B 1D03
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "010193cf2adbeecfad836fad05b46cb4ab9e8eb20c9e8df5f4f5c657ada8a2a95be40a",
+            "fingerprint": "3e4c5febafea3e4c5cffc1d41069662c399b1d03",
+            "host": "keybase.io",
+            "key_id": "1069662c399b1d03",
+            "kid": "010193cf2adbeecfad836fad05b46cb4ab9e8eb20c9e8df5f4f5c657ada8a2a95be40a",
+            "uid": "fbd0496d3e2f09ad8ddb52222051d819",
+            "username": "oliverburn"
+        },
+        "service": {
+            "hostname": "www.puppycrawl.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1459489575,
+    "expire_in": 157680000,
+    "prev": "ef2e286645f7cc62edb77694054d3b0a35162ad328483d0fe5e9d38f5ca51367",
+    "seqno": 3,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.53
+Comment: https://keybase.io/crypto
+
+yMIwAnicrVJZSBVRGL5qqRmm5IZFmVNhxUVmO3NnLoFlgS8FURqZweWcOWd0Uu9M
+c+d6M7GIFlp8yFIig7aHCikqCNzKFqxcCjMoDeomtCORVrSgVmcu9dZj/8P5z/nP
+933/wt+VGONKiBq0O/a9SVCMqL5bJ4Ku9T+n59QwyMDVjLeGKScRRyowCdi+ch0z
+XoblWE4RVI2HGBGiahDLgkRPFiBRUpEIkUJkgnhWpR5rQBM1oErAAzGUIQ8VgIjI
+QsbNaLq/lFimpfttKisQUQUaQVAjMHJXNU3lsMixkiJJvCooCuIwK1BimRFwGLQ4
+BAMkVzdojD58kfL+gf/PdQcjchrCrKhIWCC8xipUDGMEeGos4LDMKQ4wQCw/rCQU
+bVToVcRCQcvP1LoZGq/SVeKM1unlDyYUCuWaQdOsVi0YqshVjUqqYVqGbahGBf0v
+s23T69DtajOCJ8j3R8mHdD+m46QEmiagG37Gy1GkauuONCcCRZQV4AFuhmw1dYv4
+dAcBPJLMUnPSkCoqSTSe8LIkiUDzqKrEE4w8HkkRWSBiAbFQAJxE5yfwsigLmNUI
+IAoWZDooCDhB8jBOb1v8BuMVaJmwlEoG9FI/tIMWYWpv39w0xRWV4IqdGu2smSth
+WvLf5btzMG4iKWXHkaZ7z5JTV99vmjljqDO6fr63IU3o7Gs9fCtrHGd2brxuNodn
+BcPvPz66IXY8+fT1WF34Q8bID7JmqKVhQ0tmMddG9rsLJlMmcsYqXZeyo4+nH1gR
+/pUef3a0Y1nd2sd9R4NL2yeXn3m5dzxzoGRkINQ4AvJ7ZsUuKw5kFFjLk4YvFp06
+8P1QaN1R6WH7omt3NrFLFl7pv3p+z+7e0y2erv53vZU7Z15oNBef/MJ1F8EHl/Fg
+W9G5oad1MaHxeXlvjXgwlve5O7u7dU7W5u03aremhZ9nZZfsaF796tv3xLjUZuIe
+nVzFbYvbVbiy6UV9XP7rneFVdbOH5xb23K3RF8z+DdMCTSU=
+=R90x
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/oliverburn
+
+==================================================================
