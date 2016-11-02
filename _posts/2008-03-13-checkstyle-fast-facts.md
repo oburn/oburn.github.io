@@ -1,0 +1,25 @@
+---
+layout: post
+permalink: blog/checkstyle_fast_facts
+title: Checkstyle fast facts
+category: Java
+---
+
+<p>
+From <a href="http://www.ohloh.net/projects/164/widgets">http://www.ohloh.net/projects/164/widgets</a>.
+
+</p>
+<p>
+Fast Facts:
+
+</p>
+<script type="text/javascript" src="http://www.ohloh.net/projects/164/widgets/project_partner_badge">
+</script>
+<br/>
+
+<script type="text/javascript" src="http://www.ohloh.net/projects/164/widgets/project_factoids">
+</script>
+<script type="text/javascript" src="http://www.ohloh.net/projects/164/widgets/project_languages">
+</script>
+<script type="text/javascript" src="http://www.ohloh.net/projects/164/widgets/project_cocomo">
+</script>

@@ -1,0 +1,21 @@
+---
+layout: post
+permalink: blog/amazing_story1
+title: Amazing Story
+category: Other
+---
+
+<p>
+<strong>Claim:</strong> A man has been stranded at a Paris airport for more
+than a decade.
+
+</p>
+<p>
+<strong>Status:</strong> True!
+
+</p>
+<p>
+Just came across this amazing (apparently true) story <a href="http://www.snopes.com/travel/airline/airport.htm">here</a>. Well
+worth the read.
+
+</p>

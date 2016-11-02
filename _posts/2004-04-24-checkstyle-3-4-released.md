@@ -1,0 +1,22 @@
+---
+layout: post
+permalink: blog/checkstyle_3_4_released
+title: Checkstyle 3.4 released
+category: Java
+---
+
+<p>
+I have been slack recently. Yesterday I got an e-mail from <a href="http://www.redhillconsulting.com.au/blogs/simon/">Simon</a> who
+was unaware that release 3.4 of <a href="http://checkstyle.sf.net">Checkstyle</a> had been
+released. Simon is the author of the excellent copy/paste detector
+called <a href="http://www.redhillconsulting.com.au/products/simian/">Simian</a>.
+Checkstyle is apparently a <a href="http://jroller.com/page/scotartt/20040419#ant_1_6_1_import">much feared</a> development tool for helping (read forcing! :-) programmers
+write Java code that adheres to a coding standard.
+
+</p>
+<p>
+Release 3.4 can be downloaded from the <a href="http://sourceforge.net/project/showfiles.php?group_id=29721">SourceForge download page</a>. A significant number of <a href="http://checkstyle.sf.net/releasenotes.html">fixes and features</a> have been added in this release. In particular more
+metrics related checks contributed by Simon. I just love <i>Metric
+Driven Development ©</i>. :-)
+
+</p>

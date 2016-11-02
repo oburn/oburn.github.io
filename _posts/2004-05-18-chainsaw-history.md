@@ -1,0 +1,28 @@
+---
+layout: post
+permalink: blog/chainsaw_history
+title: Chainsaw History
+category: Java
+---
+
+<p>
+Back in 2001 I worked at an interesting company that at the time
+worked on an e-Business <a href="http://www.davidjones.com.au">website</a>. They have since reinvented
+themselves selling excellent tools like <a href="http://www.thecortex.net/clover/index.html">Clover</a>. The company was a great place to work as many <a href="http://codefeed.com/blog/">great</a> <a href="http://madbean.com/blog/">developers</a> <a href="http://www.dogbiscuit.org/mdub/weblog/">worked</a> there (sorry BPH, you have no blog:-).
+
+</p>
+<p>
+The environment at Cortex was such that there was always time to develop things of interest. At the time I was using Log4J and I wanted a graphical log viewer. Not having done much Swing programming I decided to write one. Thus the first version of the Log4J viewer <a href="http://logging.apache.org/log4j/docs/api/org/apache/log4j/chainsaw/package-summary.html">Chainsaw</a> was born. It was simple, it worked and it was accepted into the Log4J code base.
+
+</p>
+<p>
+I remember we came up with the name Chainsaw by kicking around names at a typical Tea-pot party (Cortesians will get the joke). The name was decided on as <i>"Chainsaw cuts your log down to size&quot;</i>. I was very proud of the name (and the interactive filtering).
+
+<p>
+Since Chainsaw served its purpose (for me) and I also had <a href="http://checkstyle.sf.net">another</a> open source project on the go, I pretty much never worked on it again. I was glad to see that others in the Log4J community picked up the ball and developed <a href="http://logging.apache.org/log4j/docs/chainsaw.html">Chainsaw v2</a>. The result of that effort is nothing short of staggering. I encourage you to give version 2 a try via the <a href="http://logging.apache.org/log4j/docs/webstart/chainsaw/chainsawWebStart.jnlp">Java Web Start link</a>.
+
+</p>
+<p>
+Many thanks to the guys for mentioning me in the contributors section. I think all that is left of my contribution is the name. :-)
+
+</p>

@@ -1,0 +1,31 @@
+---
+layout: post
+permalink: blog/pure_ascii
+title: Pure ASCII
+category: Java
+---
+
+<p>
+<strong>Problem:</strong> You want to ensure that your developers are using nothing but
+the purest ASCII characters in the source code. For example, they may be
+copying text from Microsoft Word into Javadoc comments.
+
+</p>
+<p>
+<strong>Solution:</strong> Use the Checkstyle <a href="http://checkstyle.sourceforge.net/config_misc.html#GenericIllegalRegexp">GenericIllegalRegexp</a> check to prevent
+anything but pure ASCII characters. Use the following configuration:
+
+</p>
+{% highlight xml %}
+    <module name="GenericIllegalRegexp">
+      <property name="format" value="[^\x00-\x7F]"/>
+      <property name="message" value="Only use ASCII characters."/>
+    </module>
+{% endhighlight %}
+
+<p>
+The <em>"magic&quot;</em> is in the regular expression <code>\[^\\x00-\\x7F\]</code>, which says to
+disallow any characters that are not ASCII. This should keep my <a href="../lego_animated_death_star_canteen#comment-1741330742">fourth</a>
+reader happy. :-)
+
+</p>

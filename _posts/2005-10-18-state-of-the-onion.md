@@ -1,0 +1,11 @@
+---
+layout: post
+permalink: blog/state_of_the_onion
+title: State of the Onion
+category: Other
+---
+
+<p>
+I am not a huge fan of Perl, my scripting language of choice is a <a href="http://www.python.org/">scary snake</a>. None the less I thoroughly enjoyed Larry Wall's <a href="http://www.itconversations.com/shows/detail656.html">State of the Onion</a> presentation. Well worth the listen.
+
+</p>

@@ -1,0 +1,15 @@
+---
+layout: post
+permalink: blog/it_must_just_be_me
+title: It must just be me......
+category: Java
+---
+
+<p>
+But for the life of me, I cannot understand what the <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/regex/Pattern.html">java.util.regex.Pattern</a> flag <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/regex/Pattern.html#COMMENTS">COMMENTS</a> does. I have read the Javadoc and played around and cannot understand it. I asked a few work colleagues who also do not get it. Anyone out there have a concrete and <b>meaningful</b> explanation?
+
+</p>
+<p>
+For the record I want to match words with arbitrary number of whitespace between them. I thought I could use the flag to write the regular expression <code>SELECT FROM TABLE</code> instead of <code>SELECT\\s+FROM\\s+TABLE</code>. And yes, I have <a href="http://tinyurl.com/4ka5j">tried this</a>. :-)
+
+</p>

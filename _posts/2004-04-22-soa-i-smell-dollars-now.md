@@ -1,0 +1,49 @@
+---
+layout: post
+permalink: blog/soa_i_smell_dollars_now
+title: SOA - I smell dollars now
+category: Java
+---
+
+<p>
+Way back in 1989 when I was at university I had the good luck of doing
+a course on operating systems taught by John Lions where we got to
+read the source code to Unix. John was <a href="http://www.mids.org/pay/mn/901/jl.html">largely responsible</a>
+for introducing UNIX to Australia. I remember to this day when he
+asked in a lecture on networking:
+
+</p>
+<blockquote>
+What does ISDN stand for?
+
+</blockquote>
+<p>
+To which he followed up with:
+
+</p>
+<blockquote>
+I Smell Dollars Now.
+
+</blockquote>
+<p>
+Showing my age here, but this was in reference to ISDN which was a
+comparatively new technology at the time. Telstra, then know as
+Telecom Australia, were over charging for the new technology.
+
+</p>
+<p>
+So what? Well when ever I hear about research buzzwords and
+technologies, I always end up saying to myself <i>"I Smell
+Dollars Now&quot;</i>. Web Services and the follow up, Service
+Oriented Architectures are no different. I think the parallels between
+CORBA and Web Services are staggering.
+
+</p>
+<p>
+Armed with this information about my background, you would understand
+why I resonated with Rockford Lhotka's posting about <a href="http://www.lhotka.net/WeBlog/PermaLink.aspx?guid=05f88592-9ecb-4331-a86b-cfeebc411dfe">SOA, dollar signs and trust boundaries</a>. I am going through the issues
+on a project at the moment about how to apply Service Oriented
+Architecture principles. Rockford's discussion on trust boundaries is
+excellent.
+
+</p>

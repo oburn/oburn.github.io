@@ -1,0 +1,120 @@
+---
+layout: post
+permalink: blog/back_to_my_trusty_palm
+title: Back to my trusty Palm
+category: Computing
+---
+
+<p>
+One of the nice things about buying electrical equipment from <a href="http://www.dse.com.au">Dick Smith</a> is that they have a 14-day
+no questions asked refund policy. Today I took advantage of it to
+return a <a href="http://www.cnet.com.au/pdas/pdas/0,239035588,240057263,00.htm">iPAC
+rx1950</a> that I bought four days ago. When asked why I was returning
+it, I said <i>it was not as good as my Palm</i> and I got my refund of
+$348.
+
+</p>
+<p>
+I have been using Palm devices actively since 1997. So what motivated
+me to upgrade to the iPAC from a <a href="http://www.palm.com/us/support/tungstene/">Palm Tungsten E</a>. Well, here were the reasons:
+
+</p>
+<ul>
+<li>
+Wi-Fi access.
+
+</li>
+<li>
+Ability to play WMV videos.
+
+</li>
+<li>
+Better screen.
+
+</li>
+<li>
+Try something new as the Palm platform is pretty much dead as far as
+I can tell.
+
+</li>
+</ul>
+<p>
+So why did I go back to what is a dead platform by my own words. Here
+is what is wrong with the iPAQ:
+
+</p>
+<ul>
+<li>
+The battery life of the iPAC was horrendous. I played with it for
+about 30 minutes last night testing the Wi-Fi access and the battery
+dropped from fully charged to 75%. I then left the device connected
+to the USB cable overnight and it dropped to 50%.
+
+</li>
+<li>
+Compounding the first point, recharging the device is a pain. It
+clearly does not trickle charge from the USB cable on my laptop
+meaning that I would need to plug it into the AC adapter. This is
+unacceptable as my laptop is in the lounge room and my SO would kill
+me if I had more cables lying around. Further, with my Palm I just
+leave it plugged in at home or at work and the trickle charge keeps
+it fully powered. I have not used to AC adaptor in two years.
+
+</li>
+<li>
+The Wi-Fi access works, but as a form factor the iPAQ sucks (as
+would a Palm). Reading Gmail was achievable, but not an enjoyable
+process. Given the battery life, it was clearly not something I was
+going to do often.
+
+</li>
+<li>
+<a href="http://www.avantgo.com">AvantGo</a> is something I use all
+the time on the Palm to read the paper on the train. To synchronise
+on the iPAQ you have to launch the AvantGo client on device and
+manually synchronise. On the Palm, AvantGo is synchronised when you
+synch the device. This extra step was going to drive me nuts over
+time.
+
+</li>
+<li>
+I have used <a href="http://www.fourmilab.ch/hackdiet/palm/">Eat
+Watch</a> since 1999, so yes I have seven years of data. A port of
+this program does not exist for the iPAQ and I was not going to
+write one. Yes, I could use Excel to collect the data for input into
+a desktop clone of Eat Watch I wrote for my parents, but what a
+hassle.
+
+</li>
+<li>
+Form factor. The Palm is nice and slim with an integrated cover that
+fits easily into my pocket.
+
+</li>
+</ul>
+<p>
+So I am back to my Palm, which I can still use for:
+
+</p>
+<ul>
+<li>
+Tracking weight in Eat Watch.
+
+</li>
+<li>
+Reading the paper in AvantGo.
+
+</li>
+<li>
+Listening to MP3s.
+
+</li>
+<li>
+Synchronising with Outlook.
+
+</li>
+</ul>
+<p>
+When the Palm dies I will need to consider whether I stick with the <a href="http://www.palm.com/us/products/handhelds/tungsten-e2/">dead platform</a> or go for the next generation iPAQ.
+
+</p>

@@ -1,0 +1,75 @@
+---
+layout: post
+permalink: blog/poor_man_s_comparison_of
+title: Poor man's comparison of AV products
+category: Computing
+---
+
+<p class="first">
+This is a limited, non-scientific comparison of AntiVirus products for Windows XP. I did the testing on an old machine running Windows XP SP3 with 512MB RAM.
+
+</p>
+<p>
+The four AntiVirus options I compared were:
+
+</p>
+<ul>
+<li>
+<a href="http://www.avast.com/eng/avast_4_home.html">avast! Home Edition</a> - free for home use
+
+</li>
+<li>
+<a href="http://www.microsoft.com/security_essentials/">Microsoft Security Essentials</a> - free for home use
+
+</li>
+<li>
+<a href="http://www.sunbeltsoftware.com/Home-Home-Office/VIPRE/">VIPRE Antivirus + Antispyware</a> - reasonably priced
+
+</li>
+<li>
+Nothing - that is right, no protection at all.
+
+</li>
+</ul>
+<p>
+The things I compared were:
+
+</p>
+<ul>
+<li>
+The amount of memory being consumed after booting the machine. This is a rough indicator of how much memory is consumed by the AV software.
+
+</li>
+<li>
+The time to launch Portable Apps version of OpenOffice Calc for the first time. This is a <em>cold launch</em>. I used OpenOffice as it a notoriously slow application.
+
+</li>
+<li>
+The time to launch OpenOffice Calc for the second time. This is a <em>warm launch</em>.
+
+</li>
+</ul>
+<p>
+The following graph shows the results for memory consumption:
+
+</p>
+<blockquote>
+<p class="quoted">
+<img src="/images/av-stats-mb.jpg" alt="" />
+
+</p>
+</blockquote>
+<p>
+The following graph shows the results for launch times:
+
+</p>
+<blockquote>
+<p class="quoted">
+<img src="/images/av-stats-launch.jpg" alt="" />
+
+</p>
+</blockquote>
+<p>
+I will let you draw your conclusions from the results above. Personally, I will be sticking with <a href="http://www.avast.com/eng/avast_4_home.html">avast! Home Edition</a> that I have been using for a while now.
+
+</p>

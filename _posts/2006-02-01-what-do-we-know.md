@@ -1,0 +1,36 @@
+---
+layout: post
+permalink: blog/what_do_we_know
+title: What Do We Know
+category: Other
+---
+
+<p>
+I really enjoyed listening to the podcast <a href="http://www.itconversations.com/shows/detail787.html">What
+Do We Know</a> by Robert Trivers. To quote....
+
+</p>
+<blockquote>
+The capacity of humans to deceive each other is well documented by
+history and personal experience. Less well known, however, is the
+capacity of most living things to deceive each other - species deceiving
+other species, members of their own species and themselves. We are, it
+seems, not that different from parasites, insects and bacteria in this
+regard.
+
+</blockquote>
+<blockquote>
+Dr. Robert Trivers talks about the evolutionary basis of deception in
+this address from Pop!Tech 2005. The first half of this talk focusses on
+the biological examples of deception in the natural world, with
+explanations for the evolutionary advantages of deception and
+self-deception.
+
+</blockquote>
+<blockquote>
+Later in the talk, Dr. Trivers supplies easily recognizable examples of
+common human self-deception. He then delves into an overtly political
+criticism of human deception and self-deception, with an emphasis on
+current events.
+
+</blockquote>

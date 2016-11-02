@@ -1,0 +1,15 @@
+---
+layout: post
+permalink: blog/a_tenuous_argument_but
+title: A tenuous argument, but....
+category: Java
+---
+
+<p>
+I just read Matt's very good blog about Java becoming a <a href="http://madbean.com/blog/20/">Language For Smart People</a>, which sparked a very good comment that <a href="http://www.freeroller.net/page/ceperez/20030603#java_is_a_language_for">Java Is a Language for the Masses</a>. It got Malcolm Edgar and I thinking that for something to be popular, and hence successful, it must be simple. For example, the must popular blog I have seen is <a href="http://www.wibsite.com/wiblog/dull/">The dullest blog in the world</a>.
+
+</p>
+<p>
+The corollary of all this is, smart people like complex things which are unpopular and hence, unsuccessful.
+
+</p>

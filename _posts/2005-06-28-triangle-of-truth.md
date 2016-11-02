@@ -1,0 +1,45 @@
+---
+layout: post
+permalink: blog/triangle_of_truth
+title: Triangle of truth
+category: Java
+---
+
+<p>
+<img src="/images/truth-triangle.png" alt="triangle of truth"/>
+
+</p>
+<p>
+Over the weekend I spent some time looking at the books that I
+have collected in my professional library. It is clear that <a href="http://www.stevemcconnell.com/">Steve McConnell</a> is one
+of my favourite authors and I have almost all of his <a href="http://www.stevemcconnell.com/books.htm">books</a>. One of
+my all time favourite books being the <a href="http://www.stevemcconnell.com/sg.htm">Software Project Survival Guide</a>.
+
+</p>
+<p>
+The project I am working is in the early stages of a significant
+development effort and there are lots of discussions between
+development and project management over the schedule. When reading
+the related sections in <a href="http://www.stevemcconnell.com/rd.htm">Rapid Development</a>
+it struck me how as a supposedly professional profession, we do
+not learn from previous mistakes and continue to break fundamental
+rules of development.
+
+</p>
+<p>
+I reflected on this at work in a conversation with a colleague. As
+an example I talked about the <i>Triangle of truth</i>, which is
+my name for what Steve McConnell talks about as the trade off
+between schedule, cost and product (page 126 of <a href="http://www.stevemcconnell.com/rd.htm">Rapid Development</a>). Basically all three should be kept in balance
+and no single role on a project can own all three.
+
+</p>
+<p>
+I wish as a profession we could learn fundamental rules like
+this. So when a project manager comes and demands that <i>"You
+must deliver function X in one month with two programmers"</i>, we
+can say <i>"OK, but the quality will be very poor as there is not
+enough time to do a quality job"</i> (unless of course there is
+enough time:-).
+
+</p>

@@ -1,0 +1,41 @@
+---
+layout: post
+permalink: blog/fight_evil_with_metrics_plug
+title: Fight evil with the Metrics Plug-in for Eclipse
+category: Java
+---
+
+<p>
+Everybody has a pet thing about software design that they absolutely hate. Examples might include: use of multiple inheritance, over abstraction, leaky abstractions etc. My pet hate is circular dependencies. I believe they are evil, and Java makes it all to easy to do.
+
+</p>
+<p>
+An example of a circular dependency is having three artifacts (could be a Java class, interface or package) with the following dependencies:
+
+</p>
+<ul>
+<li>
+A depends on B
+
+</li>
+<li>
+B depends on C
+
+</li>
+<li>
+C depends on A
+
+</li>
+</ul>
+<p>
+This means that implicitly that A depends on C, and C depends on A. So what I hear you say? Well, IMHO all good software design is broken into components/layers/tiers with very clear hierarchical one-way dependencies. In the example above, it is not possible to make a change to any artifact without (potentially) affecting the others. Or from a configuration management perspective, it is not possible to release artifacts separately.
+
+</p>
+<p>
+Well I discovered a really cool plug-in today for Eclipse called <a href="http://metrics.sourceforge.net/">Metrics</a>. It produces many metrics about the Java code in your project. The really nice feature is being able to analyse for circular dependencies - something it calls a "tangle" (nice name). Here is an <a href="http://metrics.sourceforge.net/package_dependencies.gif">example graph</a> it produces. Certainly a lot easier that using <a href="http://www.clarkware.com/software/JDepend.html">JDepend</a>, so I give it the big "Thumbs Up".
+
+</p>
+<p>
+Side note, I used to take my hate of circular dependencies to the extreme - I would not have circular dependencies between classes and interfaces in the same package. I had the pleasure of working for several years with <a href="http://madbean.com/blog/">Matt</a>, who is one of the most talented developers I know. Eventually he convinced me to relax this, primarily because Java does not have the notion of forward declarations (like C**).
+
+</p>

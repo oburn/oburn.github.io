@@ -1,0 +1,174 @@
+---
+layout: post
+permalink: blog/my_new_favourite_java_class
+title: My new favourite Java class
+category: Java
+---
+
+<p>
+At the moment I am digging into performance problems associated with a
+large legacy application. Most of the performance problems are
+associated with the database. Today I wrote a tool for analysing the
+dependencies between the database views, of which there are many!
+
+</p>
+<p>
+The tool works by querying the <code>SYS.USER\_VIEWS</code> view in
+Oracle and determining the dependencies of each view. It then uses <a href="http://jakarta.apache.org/velocity/">Velocity</a> to generate a
+<a href="http://graphml.graphdrawing.org/">GraphML</a> file of the
+dependencies, which are then manipulated using the excellent <a href="http://www.yworks.com/en/products_yed_about.htm">yEd</a>
+program.
+
+</p>
+<p>
+Hence, today I had the need for a quick <strike>and dirty</strike> way
+of parsing SQL statements. Initially I looked into using the well
+known <a href="http://tinyurl.com/5q6bo">StringTokenizer</a> but
+realised that it was not up to the task. I then noticed the class <a href="http://tinyurl.com/6bk6r">StreamTokenizer</a> which admit I had
+never seen before (it has been there since JDK 1.0!). After reading
+the Javadoc and this <a href="http://tinyurl.com/3uc9g">helpful guide</a> I knocked up the following class:
+
+</p>
+{% highlight java %}
+package com.puppycrawl.mirage;
+
+import java.io.IOException;
+import java.io.StreamTokenizer;
+import java.io.StringReader;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+class SqlAnalyzer
+{
+    private static final Set FROM_TERMINATORS = new HashSet();
+    static {
+        FROM_TERMINATORS.add("where");
+        FROM_TERMINATORS.add("group");
+        FROM_TERMINATORS.add("having");
+        FROM_TERMINATORS.add("order");
+        FROM_TERMINATORS.add("for");
+    }
+
+    private final String mSql;
+    private boolean mParsed;
+    private final StreamTokenizer mTokenizer;
+    private final SortedSet mTableRefs = new TreeSet();
+
+    SqlAnalyzer(final String sql)
+    {
+        mSql = sql.toLowerCase();
+        mTokenizer = new StreamTokenizer(new StringReader(mSql));
+        mTokenizer.eolIsSignificant(false);
+        mTokenizer.lowerCaseMode(false);
+        mTokenizer.parseNumbers();
+        mTokenizer.wordChars('_', '_');
+    }
+
+    /**
+     * @return the list of table references.
+     * @throws IOException
+     *             bad news
+     */
+    String[] getTableRefs()
+            throws IOException
+    {
+        parse();
+        return (String[]) mTableRefs.toArray(new String[mTableRefs.size()]);
+    }
+
+    private void parse()
+            throws IOException
+    {
+        if (mParsed) {
+            return;
+        }
+
+        // loop over tokens. Set the flag in_from when in a FROM clause and
+        // bail out when hit a ")" char, or one of the next section words
+        boolean inFromClause = false;
+        int token = mTokenizer.nextToken();
+        while (token != StreamTokenizer.TT_EOF) {
+            switch (token) {
+            case StreamTokenizer.TT_NUMBER:
+                // A number was found; the value is in nval
+                //double num = tokenizer.nval;
+                //System.out.println("read double " + num);
+                break;
+
+            case StreamTokenizer.TT_WORD:
+                // A word was found; the value is in sval
+                final String word = mTokenizer.sval;
+                //System.out.println("read word " + word);
+                if (word.equalsIgnoreCase("from")) {
+                    //System.out.println("Entering from clause");
+                    inFromClause = true;
+                }
+                else if (inFromClause) {
+                    if (FROM_TERMINATORS.contains(word)) {
+                        //System.out.println("Leaving from clause");
+                        inFromClause = false;
+                    }
+                    else {
+                        mTableRefs.add(word);
+                        // Check is next token is a word, and not a terminator,
+                        // cause if it is, swallow it.
+                        // Segment after is "from table_name tn," to be read as
+                        // "from table_name,"
+                        final int peekToken = mTokenizer.nextToken();
+                        if ((peekToken == StreamTokenizer.TT_WORD)
+                                &amp;&amp; (!FROM_TERMINATORS.contains(mTokenizer.sval)))
+                        {
+                            //System.out.println("Swallowing up "
+                            //        + mTokenizer.sval);
+                        }
+                        else {
+                            mTokenizer.pushBack();
+                        }
+                    }
+                }
+                break;
+
+            case '"':
+                // A double-quoted string was found; sval contains the contents
+                //String dquoteVal = tokenizer.sval;
+                //System.out.println("read d-quoted " + dquoteVal);
+                break;
+
+            case '\'':
+                // A single-quoted string was found; sval contains the contents
+                //String squoteVal = tokenizer.sval;
+                //System.out.println("read s-quoted " + squoteVal);
+                break;
+
+            case StreamTokenizer.TT_EOL:
+                // End of line character found
+                break;
+
+            case StreamTokenizer.TT_EOF:
+                // End of file has been reached
+                break;
+
+            default:
+                // A regular character was found; the value is the token itself
+                final char ch = (char) mTokenizer.ttype;
+                if (inFromClause &amp;&amp; (ch != ',')) {
+                    System.out.println("Bailing out of from clause as"
+                            + " got char -> " + ch);
+                    inFromClause = false;
+                }
+                break;
+            }
+            token = mTokenizer.nextToken();
+        }
+    }
+}
+{% endhighlight %}
+
+<p>
+Hence the <a href="http://tinyurl.com/6bk6r">StreamTokenizer</a> is
+now my new favourite Java class. Just cannot believe I have not seen
+it till today as I started using Java in 1996.
+
+</p>

@@ -1,0 +1,46 @@
+---
+layout: post
+permalink: blog/bash_completion_for_grails
+title: Bash completion for Grails
+category: Java
+---
+
+<p class="first">
+I have been using <a href="http://grails.org/">Grails</a> a bit recently (may be the subject of a Blog entry later). There is often the need dive out to the command line to run stuff like:
+
+</p>
+{% highlight bash %}
+prompt% grails create-domain-class book
+{% endhighlight %}
+
+<p>
+This has coincided with wanting to learn more about the <a href="http://www.linux.com/articles/54005">auto complete feature</a> of bash. I found <a href="http://doylecentral.com/?page=grails-tips">this tip</a> from Doyle of DoyleCentral.com but, to me, it is deficient in that it has a hard coded list of Grails targets. So, I decided to spin my own that gets the list of targets from Grails. Here is what I put into my <code>.bashrc</code> file:
+
+</p>
+{% highlight bash %}
+# Setup completion for grails. Lazy load the words and do it once only.
+_grails()
+{
+  local cur prev
+  COMPREPLY=()
+  cur="${COMP_WORDS[COMP_CWORD]}"
+  prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+  if [ -z "${GRAILS_TARGETS}" ]; then
+
+    GRAILS_TARGETS=$(for i in `grails help | grep '^grails ' | sed 's/^grails *//'`; do echo -n "$i "; done)
+  fi
+
+  COMPREPLY=( $(compgen -W "${GRAILS_TARGETS}" -- ${cur}) )
+}
+complete -F _grails grails
+{% endhighlight %}
+
+<p>
+This approach uses the variable <code>GRAILS\_TARGETS</code> to contain the list of Grails targets. It is lazily evaluated as it is expensive to calculate. Now of course you may still prefer the <a href="http://www.davisworld.org/blojsom/blog/default/2007/04/06/Tab-completion-101.html">other approach</a>.
+
+</p>
+<p>
+PS: I am back to using <a href="http://mwolson.org/projects/EmacsMuse.html">Emacs Muse</a> for writing Blog entries.
+
+</p>

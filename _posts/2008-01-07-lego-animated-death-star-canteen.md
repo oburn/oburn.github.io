@@ -1,0 +1,16 @@
+---
+layout: post
+permalink: blog/lego_animated_death_star_canteen
+title: Lego Animated “Death Star Canteen” skit
+category: Other
+---
+
+<p>
+Happy New Year to my three readers! Found this great video from <a href="http://www.freewaregenius.com/">http://www.freewaregenius.com/</a>.
+
+</p>
+<p>
+<object width="425" height="373">
+<param name="movie" value="http://www.youtube.com/v/Sv5iEK-IEzw&rel=1&border=1"></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/v/Sv5iEK-IEzw&rel=1&border=1" type="application/x-shockwave-flash" wmode="transparent" width="425" height="373"></embed></object>
+
+</p>

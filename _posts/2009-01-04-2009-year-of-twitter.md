@@ -1,0 +1,11 @@
+---
+layout: post
+permalink: blog/2009_year_of_twitter
+title: 2009 - year of Twitter?
+category: Java
+---
+
+<p>
+Happy New Year to those out there in the clouds. I am trying out Twitter. For those interested, my handle is <a href="http://twitter.com/oliverburn">http://twitter.com/oliverburn</a>.
+
+</p>
