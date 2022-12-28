@@ -10,5 +10,8 @@ github_username:  oburn
 
 timezone: Australia/Sydney
 
+# Include these files/folders that are excluded by default
+include: [ "/.well-known" ]
+
 # Build settings
 markdown: kramdown

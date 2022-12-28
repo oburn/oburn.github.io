@@ -1,0 +1,23 @@
+{
+  "subject": "acct:oliver@theblower.au",
+  "aliases": [
+    "https://theblower.au/@oliver",
+    "https://theblower.au/users/oliver"
+  ],
+  "links": [
+     {
+      "rel": "http://webfinger.net/rel/profile-page",
+      "type": "text/html",
+      "href": "https://theblower.au/@oliver"
+    },
+    {
+      "rel": "self",
+      "type": "application/activity+json",
+      "href": "https://theblower.au/users/oliver"
+    },
+    {
+      "rel": "http://ostatus.org/schema/1.0/subscribe",
+      "template": "https://theblower.au/authorize_interaction?uri={uri}"
+    }
+  ]
+}
