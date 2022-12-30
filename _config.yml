@@ -7,6 +7,7 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://www.puppycrawl.com" # the base hostname & protocol for your site
 twitter_username: oliverburn
 github_username:  oburn
+mastodon_url: "https://theblower.au/@oliver"
 
 timezone: Australia/Sydney
 
