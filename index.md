@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About2
+title: About
 permalink: /
 ---
 
@@ -12,7 +12,7 @@ The website is generated using [Jekyll](http://jekyllrb.com) and hosted (for fre
 If you are wondering why the site is called `puppycrawl.com`, you are not alone. The source of inspiration for the name came from a dog named "[Applet](/images/applet.gif)".
  
 # Open Source
-I am an active participant on the Open Source community. I am probably best known (hated?) for developing the tool [Checkstyle](http://checkstyle.sourceforge.net). It is a  development tool to help programmers write Java code that adheres to a coding standard.
+I ~~am~~ was an active participant on the Open Source community. I am probably best known (hated?) for developing the tool [Checkstyle](http://checkstyle.sourceforge.net). It is a  development tool to help programmers write Java code that adheres to a coding standard.
 
 # Professional
-During the day I work at [Atlassian](http://www.atlassian.com) as an Architect in the Sydney, Australia,  office.
+During the day I work at [Atlassian](http://www.atlassian.com) as an Architect from Sydney, Australia.
