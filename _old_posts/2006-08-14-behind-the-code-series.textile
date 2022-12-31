@@ -1,9 +1,0 @@
----
-layout: post
-permalink: blog/behind_the_code_series
-title: Behind The Code series
-category: Java
----
-<p>
-  I really enjoy the Microsoft <a href="http://channel9.msdn.com/shows/Behind_The_Code">Behind The Code</a> series. I find it is both informative and interesting. The latest episode is <a href="http://channel9.msdn.com/ShowPost.aspx?PostID=224935#224935">Tony Williams: Co-inventor of COM</a>, which is well worth watching.
-</p>

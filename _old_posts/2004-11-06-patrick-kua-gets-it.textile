@@ -1,9 +1,0 @@
----
-layout: post
-permalink: blog/patrick_kua_gets_it
-title: Patrick Kua gets it
-category: Java
----
-<p>I just read <a href="http://www.thekua.com/rant">Patrick Kua</a>'s excellent <a href="http://www.thekua.com/rant/index.php?p=47">blog</a> about how to setup Checkstyle with a custom Check to ensure that sessions are properly closed within method scopes. It really nice when somebody you have never met, gets how to use Checkstyle properly.</p>
-
-<p>On my current project, one person wrote a custom Check to ensure that all caught exceptions were either were properly logged or were wrapped and re-thrown. This helped address the problem where we were losing valuable debugging information.</p>
