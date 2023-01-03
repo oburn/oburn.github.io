@@ -6,7 +6,7 @@ categories: blog
 
 # Context
 
-Let me share the biggest producitivy hack I made in 2022. For a while I have been frustrated at the handling of opening URLs on both my work and personal MacBook laptops. I want the ability to open certain URLs in different applications.
+Let me share the biggest productivity hack I made in 2022. For a while I have been frustrated at the handling of opening URLs on both my work and personal MacBook laptops. I want the ability to open certain URLs in different applications.
 
 For example:
 
