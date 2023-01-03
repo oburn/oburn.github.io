@@ -23,7 +23,7 @@ Enter [Finicky](https://github.com/johnste/finicky) which provides a way to prog
 
 The following diagram gives an overview of how the flow works.
 
-<img src="../images/2023/20230103-overview.png" alt="Overview" width="800"/>
+<img src="/images/2023/20230103-overview.png" alt="Overview" width="800"/>
 
 I installed Finicky using `brew install --cask finicky`, and found the documentation to be excellent. I will now describe my current configuration.
 
