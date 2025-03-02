@@ -5,7 +5,6 @@ description: > # this means to ignore newlines until "baseurl:"
   Oliver Burn's personal website and blog. Copyright 2003 onwards. All rights reserved.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://www.puppycrawl.com" # the base hostname & protocol for your site
-twitter_username: oliverburn
 github_username:  oburn
 mastodon_url: "https://theblower.au/@oliver"
 
